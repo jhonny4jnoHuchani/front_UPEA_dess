@@ -1,0 +1,29 @@
+#=======================================
+#    CLAVE ENCRYPTACION
+
+    VITE_APP_ENCRYPT = "UniversidadPublicaDeElAlto"
+    VITE_APP_API_TOKEN=
+# ======================================
+# ======================================
+#   LINK DE LA API-REST
+
+    VITE_APP_ROOT_API = https://serviciopagina.upea.bo
+# ======================================
+
+# ======================================
+#   LINK DEL ADMINISTRADOR PARA LAS PAGINAS WEB
+
+    VITE_APP_ADMIN_API = http://administracionpaginas.upea.edu.bo/login
+# ======================================
+
+# ======================================
+#   UPEA : UNIVERSIDAD PÚBLICA DE EL ALTO
+
+   VITE_APP_ID_INSTITUCION = 1
+   VITE_APP_ID_CARRERA = 0
+   VITE_APP_ANIVERSARIO_UNIVERSIDAD = 25
+
+# ======================================
+
+
+    
