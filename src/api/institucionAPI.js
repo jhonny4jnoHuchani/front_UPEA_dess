@@ -4,24 +4,39 @@ const institucionAPI = axios.create({
     baseURL: "https://serviciopagina.upea.bo/api",
 });
 
-//servicio de prueba en el servidor de pruebas
-const institucionAPIv2 = axios.create({
-  baseURL: "/api",
-  headers: {
-    Authorization: `Bearer ${import.meta.env.VITE_APP_API_TOKEN}`,
-  },
-});
-
 
 //https://serviciopagina.upea.bo/api/UpeaCarrera/7
 
+const institucionAPIv2 = axios.create({
+  baseURL: "/api/v2",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_APP_API_TOKEN || ""}`,
+  },
+});
+
 /* DATOS OBTENIDOS DESDE LA API ================== */
 export const getInstitucion = async () => {
-    const res = await institucionAPIv2.get(
-      "/instituciones/" + import.meta.env.VITE_APP_ID_INSTITUCION
+    const INSTITUCION_ID = import.meta.env.VITE_APP_ID_INSTITUCION;
+
+    const [basica, contenido] = await Promise.all([
+      institucionAPIv2.get(`/institucionesPrincipal/${INSTITUCION_ID}`),
+      institucionAPIv2.get(`/institucion/${INSTITUCION_ID}/contenido`),
+    ]);
+
+    // Crear el objeto Descripcion
+    const Descripcion = {
+      ...(basica.data.Descripcion || basica.data),
+      ...contenido.data,
+      id_carrera: 0,
+      slider: [],
+    };
+    console.log("prueba nueva API v2 ");
+    console.log(Descripcion);
+    const res = await institucionAPI.get(
+        "/InstitucionUPEA/" + import.meta.env.VITE_APP_ID_INSTITUCION
     );
-    console.log("TOKEN:Instituciones");
-    console.log(import.meta.env.VITE_APP_API_TOKEN);
+    console.log("prueba antigua API ");
     console.log(res.data.Descripcion);
     return res.data.Descripcion;
 };
@@ -42,8 +57,8 @@ export const getCarreras = async () => {
 };
 
 export const getCarrera = async (data) => {
-    const res = await institucionAPIv2.get(
-      "/instituciones/" + data.queryKey[1]
+    const res = await institucionAPI.get(
+        "/InstitucionUPEA/"+data.queryKey[1]
     );
     return res.data.Descripcion;
 };
@@ -105,18 +120,12 @@ export const getPublicacion = async (id) => {
 };
 
 export const getGacetas = async () => {
-  console.log("TOKEN:Gacetas");
-  console.log(import.meta.env.VITE_APP_API_TOKEN);
-
-  // SOLUCIÓN: Usa la MISMA instancia y el endpoint correcto
-  const res = await institucionAPIv2.get(
-    "/instituciones/" + import.meta.env.VITE_APP_ID_INSTITUCION
-  );
-
-  // Las gacetas ya vienen en la respuesta de instituciones
-  console.log(res.data.Descripcion.gacetas);
-  return res.data.Descripcion.gacetas;
+    const res = await institucionAPI.get(
+        "/gacetaunivAll/" + import.meta.env.VITE_APP_ID_INSTITUCION
+    );
+    return res.data;
 };
+
 
 export const getEventos = async () => {
     const res = await institucionAPI.get(
