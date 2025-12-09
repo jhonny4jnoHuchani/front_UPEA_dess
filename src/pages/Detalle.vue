@@ -10,11 +10,11 @@ import CryptoJS from "crypto-js";
 import {
     getInstitucion,
     getPublicaciones,
-    getPublicacion,
+   //getPublicacion,
     getGacetas,
     getVideos,
     getEventos,
-    getEvento,
+    //getEvento,
 } from "../api/institucionAPI";
 import { useQuery } from "vue-query";
 import { CATEGORIAS } from "../types/types";

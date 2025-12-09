@@ -31,8 +31,8 @@
                 <i class="ri-arrow-down-s-line"></i>
             </span>
             <ul class="submenu-wrapper" v-if="!isLoadinLinks">
-                <li v-for="link, index in MEDIOS_DE_COMUNICACION(links)" :key="index" class="title"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1"><img :src="getImagenLink(link.ei_imagen)" alt=""></a></li>
+                <li v-for="link, index in MEDIOS_DE_COMUNICACION(links)" :key="index" class="title"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1"><img :src="getImagenLink(link.imagen)" alt=""></a></li>
             </ul>            
         </li>
         <li >
@@ -43,8 +43,8 @@
                 <i class="ri-arrow-down-s-line"></i>
             </span>
             <ul class="submenu-wrapper" v-if="!isLoadinLinks">
-                <li v-for="link, index in INTERACCION_SOCIAL(links)" :key="index" class="title"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1"><img :src="getImagenLink(link.ei_imagen)" alt="">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                <li v-for="link, index in INTERACCION_SOCIAL(links)" :key="index" class="title"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1"><img :src="getImagenLink(link.imagen)" alt="">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
             </ul>            
         </li>
         <li >
@@ -55,8 +55,8 @@
                 <i class="ri-arrow-down-s-line"></i>
             </span>
             <ul class="submenu-wrapper" v-if="!isLoadinLinks">
-                <li v-for="link, index in SERVICIOS_VIRTUALES(links)" :key="index" class="title"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                <li v-for="link, index in SERVICIOS_VIRTUALES(links)" :key="index" class="title"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
             </ul>            
         </li>
         <li >
@@ -67,8 +67,8 @@
                 <i class="ri-arrow-down-s-line"></i>
             </span>
             <ul class="submenu-wrapper" v-if="!isLoadinLinks">
-                <li v-for="link, index in OFERTAS_ACADEMICAS(links)" :key="index" class="title"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                <li v-for="link, index in OFERTAS_ACADEMICAS(links)" :key="index" class="title"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
             </ul>            
         </li>
         <li >
@@ -103,23 +103,23 @@ const capitalizarPrimeraLetra = (texto) => {
 const api = import.meta.env.VITE_APP_ROOT_API
 
 const SERVICIOS_VIRTUALES = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_SERVICIOS_VIRTUALES)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_SERVICIOS_VIRTUALES)
 }
 
 const INTERACCION_SOCIAL = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_INTERACCION_SOCIAL)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_INTERACCION_SOCIAL)
 }
 
 const OFERTAS_ACADEMICAS = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_OFERTAS_ACADEMICAS)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_OFERTAS_ACADEMICAS)
 }
 
 const MEDIOS_DE_COMUNICACION = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_MEDIOS_DE_COMUNICACION)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_MEDIOS_DE_COMUNICACION)
 }
 
 const UNIDADES_ADMINISTRATIVAS = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_UNIDADES_ADMINISTRATIVAS)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_UNIDADES_ADMINISTRATIVAS)
 }
 
 

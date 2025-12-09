@@ -10,23 +10,23 @@ const { isLoading: isLoadinLinks, data: links } = useQuery(
 );
 
 const SERVICIOS_VIRTUALES = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_SERVICIOS_VIRTUALES)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_SERVICIOS_VIRTUALES)
 }
 
 const INTERACCION_SOCIAL = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_INTERACCION_SOCIAL)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_INTERACCION_SOCIAL)
 }
 
 const OFERTAS_ACADEMICAS = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_OFERTAS_ACADEMICAS)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_OFERTAS_ACADEMICAS)
 }
 
 const MEDIOS_DE_COMUNICACION = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_MEDIOS_DE_COMUNICACION)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_MEDIOS_DE_COMUNICACION)
 }
 
 const UNIDADES_ADMINISTRATIVAS = (links) => {
-    return links.filter(link => link.ei_tipo === CATEGORIAS.NAV_UNIDADES_ADMINISTRATIVAS)
+    return links.filter(link => link.tipo === CATEGORIAS.NAV_UNIDADES_ADMINISTRATIVAS)
 }
 
 const capitalizarPrimeraLetra = (texto) => {
@@ -89,27 +89,27 @@ const getImagenLink = (img) => {
                 <li>
                     <h6 class="menu-title">Medios de Comunicación</h6>
                     <ul class="submenu">
-                        <li v-for="link, index in MEDIOS_DE_COMUNICACION(links)" :key="index"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1"><img :src="getImagenLink(link.ei_imagen)" alt=""></a></li>
+                        <li v-for="link, index in MEDIOS_DE_COMUNICACION(links)" :key="index"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1"><img :src="getImagenLink(link.imagen)" alt=""></a></li>
                     </ul>
                 </li>
                 <li>
                     <h6 class="menu-title">Interacción Social</h6>
                     <ul class="submenu">
-                        <li v-for="link, index in INTERACCION_SOCIAL(links)" :key="index"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1"><img :src="getImagenLink(link.ei_imagen)" alt="img_link">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                        <li v-for="link, index in INTERACCION_SOCIAL(links)" :key="index"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1"><img :src="getImagenLink(link.imagen)" alt="img_link">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
                     </ul>                    
                 </li>
                 <li>                    
                     <h6 class="menu-title">Servicios Virtuales</h6>
                     <ul class="submenu">
-                        <li v-for="link, index in SERVICIOS_VIRTUALES(links)" :key="index"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                        <li v-for="link, index in SERVICIOS_VIRTUALES(links)" :key="index"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
                     </ul>
                     <h6 class="menu-title" style="margin-top: 3em;">Ofertas Académicas</h6>
                     <ul class="submenu">
-                        <li v-for="link, index in OFERTAS_ACADEMICAS(links)" :key="index"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                        <li v-for="link, index in OFERTAS_ACADEMICAS(links)" :key="index"><a :href="link.url_link"
+                                target="_blank" v-if="link.estado === 1">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
                     </ul>                    
                 </li>
             </ul>
@@ -118,8 +118,8 @@ const getImagenLink = (img) => {
         <li class="has-droupdown">
             <router-link to="">Unidades Administrativas</router-link>
             <ul class="submenu">
-                <li v-for="link, index in UNIDADES_ADMINISTRATIVAS(links)" :key="index"><a :href="link.ei_link"
-                        target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>
+                <li v-for="link, index in UNIDADES_ADMINISTRATIVAS(links)" :key="index"><a :href="link.url_link"
+                        target="_blank" v-if="link.estado === 1">{{ capitalizarPrimeraLetra(link.nombre) }}</a></li>
             </ul>
         </li>
     </ul>

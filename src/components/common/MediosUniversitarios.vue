@@ -21,7 +21,7 @@ const { isLoading: isLoadingLinksExternos, data: links } = useQuery(
 
 // Filtración de Medios --------------------------------------------
 const getLinksMedios = (links) => {
-    return links.filter((link) => link.ei_tipo === CATEGORIAS.MEDIOS);
+    return links.filter((link) => link.tipo === CATEGORIAS.MEDIOS);
 };
 </script>
 <template>
@@ -44,7 +44,7 @@ const getLinksMedios = (links) => {
                 <div
                     class="medios_universitarios col-xl-3 col-md-4 col-sm-6 container" 
                     v-for="link in getLinksMedios(links)"
-                    :key="link.ei_id"
+                    :key="link.id_link"
                 >
                     <Medio class="medio_enlace" :link="link" />
                 </div>

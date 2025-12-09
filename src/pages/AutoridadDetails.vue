@@ -38,11 +38,14 @@ const getAutoridad = (institucion) => {
     autoridad = institucion.autoridad.find((a) => a.id_autoridad == id);
 }
 
+// ✅ SOLO CAMBIA ESTA FUNCIÓN - LA ÚNICA MODIFICACIÓN
 const foto = (foto) => {
-    return `${import.meta.env.VITE_APP_ROOT_API
-        }/InstitucionUpea/Autoridad/${foto}`;
+    console.log(foto);
+    if (!foto) return '/images/default-autoridad.jpg';
+    return `http://200.105.169.11:1041${foto}`;
 }
 </script>
+
 <template>
     {{ getAutoridad(institucion) }}
     <div id="main-wrapper" class="main-wrapper" v-if="!loading_institucion">
@@ -70,7 +73,8 @@ const foto = (foto) => {
                             <ul class="social-share">
                                 <li><a :href="autoridad.facebook_autoridad" target="_blank"><i
                                             class="icon-facebook"></i></a></li>
-                                <li><a :href="autoridad.twiter_autoridad" target="_blank"><i class="icon-twitter"></i></a>
+                                <li><a :href="autoridad.twiter_autoridad" target="_blank"><i
+                                            class="icon-twitter"></i></a>
                                 </li>
                                 <li><a :href="`tel:+591${autoridad.celular_autoridad}`" target="_blank"><i
                                             class="icon-phone"></i></a></li>
@@ -82,7 +86,8 @@ const foto = (foto) => {
                             <div class="main-info">
                                 <span class="subtitle">UPEA</span>
                                 <h3 class="title">{{ autoridad.nombre_autoridad }}</h3>
-                                <span class="designation" v-if="id === 127">"La educación es el motor del desarrollo"</span>
+                                <span class="designation" v-if="id === 127">"La educación es el motor del
+                                    desarrollo"</span>
                                 <span class="designation" v-if="id === 128">"La educación es un derecho, no un
                                     privilegio"</span>
                                 <ul class="team-meta">
@@ -107,13 +112,16 @@ const foto = (foto) => {
                                     desempeña como vicerrector de la Universidad Pública de El Alto (UPEA).
 
                                     Nació en la ciudad de El Alto, Bolivia, el 20 de julio de 1969. Realizó sus estudios
-                                    primarios y secundarios en la ciudad de El Alto. Luego, se trasladó a la ciudad de La
-                                    Paz para estudiar en la Universidad Mayor de San Andrés (UMSA). En la UMSA, obtuvo el
+                                    primarios y secundarios en la ciudad de El Alto. Luego, se trasladó a la ciudad de
+                                    La
+                                    Paz para estudiar en la Universidad Mayor de San Andrés (UMSA). En la UMSA, obtuvo
+                                    el
                                     título de Licenciado en Ciencias de la Educación, con mención en Educación Superior.
                                     Posteriormente, obtuvo el título de Doctor en Educación, con mención en Educación
                                     Superior, en la Universidad de Granada, España.
 
-                                    En el ámbito laboral, el Dr. Chambi ha trabajado como docente en la UMSA y en la UPEA.
+                                    En el ámbito laboral, el Dr. Chambi ha trabajado como docente en la UMSA y en la
+                                    UPEA.
                                     También ha trabajado como investigador en el Instituto de Investigaciones Sociales y
                                     Humanísticas de la UMSA.
 
@@ -122,17 +130,22 @@ const foto = (foto) => {
                                     calidad académica de la UPEA, promover la investigación científica y la proyección
                                     social de la universidad.
 
-                                    El Dr. Chambi es un reconocido defensor de la educación superior pública. Ha participado
-                                    en diversas conferencias y eventos internacionales sobre educación superior. También es
+                                    El Dr. Chambi es un reconocido defensor de la educación superior pública. Ha
+                                    participado
+                                    en diversas conferencias y eventos internacionales sobre educación superior. También
+                                    es
                                     miembro de la Asociación Boliviana de Educación Superior (ABES).</p>
                             </div>
                             <div class="bio-describe" v-if="id === 127">
                                 <h4 class="title">Frases</h4>
-                                <p>"La UPEA es una universidad comprometida con la excelencia académica, la investigación y
+                                <p>"La UPEA es una universidad comprometida con la excelencia académica, la
+                                    investigación y
                                     la proyección social. Es una universidad que trabaja para formar profesionales
                                     competentes, investigadores comprometidos y ciudadanos solidarios."</p>
-                                <p>"La educación superior es la llave que abre las puertas del desarrollo personal y social.
-                                    Es la herramienta que nos permite transformar nuestras vidas y construir un futuro mejor
+                                <p>"La educación superior es la llave que abre las puertas del desarrollo personal y
+                                    social.
+                                    Es la herramienta que nos permite transformar nuestras vidas y construir un futuro
+                                    mejor
                                     para nosotros y para nuestros hijos."</p>
                             </div>
                             <!-- información Dr. Carlos Condori Titirico -->
@@ -140,25 +153,32 @@ const foto = (foto) => {
                                 <h4 class="title">Historia</h4>
                                 <p>
                                     Carlos Condori Titirico, se define como un tipo sencillo, humilde y muy sincero,
-                                    comprometido con su familia. Nació en Ancoraimes, provincia Omasuyos un dos de junio de
+                                    comprometido con su familia. Nació en Ancoraimes, provincia Omasuyos un dos de junio
+                                    de
                                     1979. En su tiempo libre prefiere estar al lado de su familia, con los amigos y
                                     practicar deporte.
 
                                     Salió bachiller de la Unidad Educativa Ignacio Calderón de Tembladerani. Desde niño
-                                    prefería la materia de Biología, era amante de la salud y los seres humanos. En 1996,
+                                    prefería la materia de Biología, era amante de la salud y los seres humanos. En
+                                    1996,
                                     ingresó a la Carrera de Odontología en la Universidad Mayor de San Andrés (UMSA),
-                                    también ha estudiado Prótesis Dental, carreras que necesitan demasiada empatía con la
+                                    también ha estudiado Prótesis Dental, carreras que necesitan demasiada empatía con
+                                    la
                                     gente y tener mucha vocación de servicio.
 
-                                    Actualmente dicta la materia de Histología en el Área de Salud en la UPEA, durante su
-                                    época de universitario era auxiliar de docencia en Histología y Patología, UMSA. Desde
-                                    el fondo de su corazón agradece al doctor Teodoro Alanoca, un verdadero mentor para su
+                                    Actualmente dicta la materia de Histología en el Área de Salud en la UPEA, durante
+                                    su
+                                    época de universitario era auxiliar de docencia en Histología y Patología, UMSA.
+                                    Desde
+                                    el fondo de su corazón agradece al doctor Teodoro Alanoca, un verdadero mentor para
+                                    su
                                     persona.
 
-                                    "Aquí tienen un servidor. Soy un candidato salido de las bases. Me siento comprometido
-                                    con los docentes y estudiantes de nuestra gloriosa Universidad”, dijo el doctor Condori,
+                                    "Aquí tienen un servidor. Soy un candidato salido de las bases. Me siento
+                                    comprometido
+                                    con los docentes y estudiantes de nuestra gloriosa Universidad", dijo el doctor
+                                    Condori,
                                     quien aspira ser Rector de la UPEA.
-
                                 </p>
                             </div>
                             <div class="bio-describe" v-if="id === 128">
@@ -166,7 +186,8 @@ const foto = (foto) => {
                                 <p>"Estamos haciendo historia en nuestra gestión, plasmando la titulación efectiva,
                                     generando elementos humanos que serán capaces de resolver las necesidades de la urbe
                                     alteña y la población boliviana."</p>
-                                <p>"Desde la UPEA expresamos nuestro reconocimiento a todas esas generaciones que lucharon y
+                                <p>"Desde la UPEA expresamos nuestro reconocimiento a todas esas generaciones que
+                                    lucharon y
                                     continúan luchando en defensa de la Autonomía Universitaria."</p>
                             </div>
                         </div>
@@ -178,16 +199,18 @@ const foto = (foto) => {
     </div>
 </template>
 <style>
-.img_icon_content{
+.img_icon_content {
     position: relative;
 }
+
 .img_icon {
     position: absolute;
     width: 100px;
     top: 5px;
     right: 5px;
 }
+
 .img_icon img {
-    filter: drop-shadow(0px 0px 15px rgba(0,0,0,.2));
+    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, .2));
 }
 </style>
