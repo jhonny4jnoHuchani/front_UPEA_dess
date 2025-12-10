@@ -23,6 +23,7 @@ const { isLoading: isLoadingInstitucion, data: institucion } = useQuery(
     "institucion",
     getInstitucion
 );
+console.log("institucion en Index2.vue :");
 </script>
 <template>
     <div v-if="isLoadingInstitucion">
@@ -49,7 +50,8 @@ const { isLoading: isLoadingInstitucion, data: institucion } = useQuery(
         />  
 
         <Categories />        
-
+        <!-- servicios
+         se debe cambiar la ruta para las imagenes en Medio.vue  -->
         <MediosUniversitarios :institucion="institucion" style="margin-top: 120px;"/>                
 
         <!-- publicaciones -->

@@ -7,7 +7,7 @@ const RandomImage = (portada) => {
     const indiceAleatorio = Math.floor(Math.random() * portada.length);
     const imagenSeleccionada = portada[indiceAleatorio].portada_imagen;
     return `${
-        import.meta.env.VITE_APP_ROOT_API
-    }/InstitucionUpea/Portada/${imagenSeleccionada}`;
+      import.meta.env.VITE_APP_API_URL_V1
+    }${imagenSeleccionada}`;
 };
 export default RandomImage;

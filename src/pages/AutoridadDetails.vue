@@ -38,9 +38,7 @@ const getAutoridad = (institucion) => {
     autoridad = institucion.autoridad.find((a) => a.id_autoridad == id);
 }
 
-// ✅ SOLO CAMBIA ESTA FUNCIÓN - LA ÚNICA MODIFICACIÓN
 const foto = (foto) => {
-    console.log(foto);
     if (!foto) return '/images/default-autoridad.jpg';
     return `http://200.105.169.11:1041${foto}`;
 }

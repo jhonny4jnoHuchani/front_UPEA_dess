@@ -54,11 +54,11 @@ import CryptoJS from "crypto-js";
 const props = defineProps({
     autoridad: Object,
 });
-
+console.log("autoridad en InstructorTwo.vue :");
 function foto(foto) {
     return `${
-        import.meta.env.VITE_APP_ROOT_API
-    }/InstitucionUpea/Autoridad/${foto}`;
+        import.meta.env.VITE_APP_API_URL_V1
+    }${foto}`;
 }
 
 const clave_encryptacion = import.meta.env.VITE_APP_ENCRYPT

@@ -14,8 +14,8 @@
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`${api}/Publicaciones/${item.publicaciones_imagen}`"
-                        alt="imagen"
+                        :src="`${api}${item.publicaciones_imagen}`"
+                        alt="imagen_imagen_publicacion "
                     />
                 </router-link>
                 <div class="time-top">
@@ -93,7 +93,8 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`${api}/Eventos/${item.evento_imagen}`" alt="imagen" />
+                    <!--se cambia la ruta de la imagen-->
+                    <img :src="`${api}${item.evento_imagen}`" alt="imagen" />
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>
@@ -160,7 +161,8 @@
 import { CATEGORIAS } from "../../types/types";
 import CryptoJS from "crypto-js";
 const { extraClass, item, categoria } = defineProps(["extraClass", "item", "categoria"]);
-const api = import.meta.env.VITE_APP_ROOT_API;
+//cambiandos la parte para la ruta correcta de la imagen en Course.vue
+const api = import.meta.env.VITE_APP_API_URL_V1;
 const formatearFecha = (fechaString) => {
     const fecha = new Date(fechaString);
 

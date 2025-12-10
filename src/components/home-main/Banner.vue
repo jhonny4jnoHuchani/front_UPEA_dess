@@ -14,14 +14,15 @@ const api = import.meta.env.VITE_APP_ROOT_API
 const getLogo = (img) => {
   return `${api}/InstitucionUpea/${img}`;
 };
-
 // Imagen y Frase Aleatoria --------------------------------------
 const img = RandomImage(institucion.portada);
-const frase = RandomFrase()
+console.log("ESTE ES EL BANNER :", img);
+console.log("este es log institucion portada", institucion.portada);
+const frase = RandomFrase();
 </script>
 <template>
   <div class="hero-banner hero-style-1 bg-image bg-image--11 bg-upea-index2"
-    :style="`background: url(${img});background-attachment:fixed;background-repeat:no-repeat;background-size:cover`">
+    :style="`background: url(${img}) ;background-attachment:fixed;background-repeat:no-repeat;background-size:cover`">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
