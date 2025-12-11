@@ -16,9 +16,8 @@ const getLogo = (img) => {
 };
 // Imagen y Frase Aleatoria --------------------------------------
 const img = RandomImage(institucion.portada);
-console.log("ESTE ES EL BANNER :", img);
-console.log("este es log institucion portada", institucion.portada);
 const frase = RandomFrase();
+// debug logs removed
 </script>
 <template>
   <div class="hero-banner hero-style-1 bg-image bg-image--11 bg-upea-index2"

@@ -23,7 +23,7 @@ const { isLoading: isLoadingInstitucion, data: institucion } = useQuery(
     "institucion",
     getInstitucion
 );
-console.log("institucion en Index2.vue :");
+// debug log removed
 </script>
 <template>
     <div v-if="isLoadingInstitucion">
