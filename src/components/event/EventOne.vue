@@ -14,7 +14,7 @@ const obtenerMes = (fechaStr) => {
     const fecha = new Date(fechaStr);
     return fecha.toLocaleString("default", { month: "short" });
 };
-const api = import.meta.env.VITE_APP_ROOT_API;
+const api = import.meta.env.VITE_APP_API_URL_V1;
 const claveEncryptacion = import.meta.env.VITE_APP_ENCRYPT
 
 // Método de Encryption -------------------------------------------------------------
@@ -40,7 +40,7 @@ const encrypted = (id) => {
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`${api}/Publicaciones/${item.publicaciones_imagen}`"
+                        :src="`${api}${item.publicaciones_imagen}`"
                         alt="imagen"
                     />
                 </router-link>

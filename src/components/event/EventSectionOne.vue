@@ -22,19 +22,44 @@ const { isLoading: isLoadingPublicaciones, data: publicaciones } = useQuery(
 const { isLoading: isLoadingEventos, data: eventos } = useQuery("eventos", getEventos);
 
 // Variables de filtrado de publicaciones ----------------------------------------
+const normalizeTipo = (() => {
+    const cache = new Map();
+
+    return (tipo) => {
+        if (!tipo || typeof tipo !== 'string') return '';
+
+        // Usar caché si ya calculamos este valor
+        if (cache.has(tipo)) {
+            return cache.get(tipo);
+        }
+
+        const normalizado = tipo.trim().toUpperCase();
+        cache.set(tipo, normalizado);
+
+        return normalizado;
+    };
+})();
+
+// Todas las funciones con normalización consistente
 const getPublicaciones_All = (publicaciones) => {
-    return publicaciones.filter(
-        (s) =>
-            s.publicaciones_tipo != CATEGORIAS.NOTICIA &&
-            s.publicaciones_tipo != CATEGORIAS.SERVICIO
-    );
+    if (!publicaciones || !Array.isArray(publicaciones)) return [];
+
+    return publicaciones.filter(s => {
+        const tipo = normalizeTipo(s.publicaciones_tipo);
+        return tipo !== CATEGORIAS.NOTICIA && tipo !== CATEGORIAS.SERVICIO;
+    });
 };
+
 const getNoticias = (noticias) => {
-    return noticias.filter((s) => s.publicaciones_tipo === CATEGORIAS.NOTICIA);
+    if (!noticias || !Array.isArray(noticias)) return [];
+    return noticias.filter(s => normalizeTipo(s.publicaciones_tipo) === CATEGORIAS.NOTICIA);
 };
+
 const getServicios = (servicios) => {
-    return servicios.filter((s) => s.publicaciones_tipo === CATEGORIAS.SERVICIO);
+    if (!servicios || !Array.isArray(servicios)) return [];
+    return servicios.filter(s => normalizeTipo(s.publicaciones_tipo) === CATEGORIAS.SERVICIO);
 };
+
 </script>
 <template>
     <div class="edu-event-area" :class="extraClass">
