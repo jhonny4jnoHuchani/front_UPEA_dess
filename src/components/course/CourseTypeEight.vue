@@ -14,7 +14,7 @@
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`${api}/Publicaciones/${item.publicaciones_imagen}`"
+                        :src="`${api}${item.publicaciones_imagen}`"
                         alt="imagen"
                     />
                 </router-link>
@@ -46,7 +46,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`${api}/Eventos/${item.evento_imagen}`" alt="imagen" />
+                    <img :src="`${api}${item.evento_imagen}`" alt="imagen" />
                 </router-link>
                 <div class="course-price price-round" style="font-size: 1em">
                     {{ obtenerDia(item.evento_fecha) }}
@@ -74,7 +74,7 @@
 import CryptoJS from "crypto-js";
 import { CATEGORIAS } from "../../types/types";
 const { extraClass, item, categoria } = defineProps(["extraClass", "item", "categoria"]);
-const api = import.meta.env.VITE_APP_ROOT_API;
+const api = import.meta.env.VITE_APP_API_URL_V1;
 const obtenerDia = (fechaStr) => {
     const fecha = new Date(fechaStr);
     return fecha.getDate();

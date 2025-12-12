@@ -7,7 +7,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`">
-                    <img :src="`${api}/Publicaciones/${item.publicaciones_imagen}`" alt="image" style="width: 200px;">
+                    <img :src="`${api}${item.publicaciones_imagen}`" alt="image" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>
@@ -40,7 +40,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`${api}/Eventos/${item.evento_imagen}`" alt="imagen" style="width: 200px;">
+                    <img :src="`${api}${item.evento_imagen}`" alt="imagen" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{categoria}}</span>
@@ -104,7 +104,7 @@
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.gaceta_id)}`">
                     <vue-pdf-embed
-                        :source="`${api}/Gaceta/${item.gaceta_documento}`"
+                        :source="`${api}${item.gaceta_documento}`"
                         :page="1"
                     />
                 </router-link>
@@ -142,7 +142,7 @@ import VuePdfEmbed from "vue-pdf-embed";
 import CryptoJS from "crypto-js";
 const { categoria, item } = defineProps(["categoria", "item"])
 
-const api = import.meta.env.VITE_APP_ROOT_API;
+const api = import.meta.env.VITE_APP_API_URL_V1;
 
 const formatearFecha = (fechaString) => {
     const fecha = new Date(fechaString);

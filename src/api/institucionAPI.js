@@ -123,13 +123,18 @@ export const getPublicacion = async (id) => {
 */
 
 export const getGacetas = async () => {
-    const res = await institucionAPIv2.get(
-      `/institucion/${import.meta.env.VITE_APP_ID_INSTITUCION}/gacetaEventos`
-    );
-    // verificar el uso y cragado de documento docx y jpeg
-    return res.data.upea_gaceta_universitaria;
-};
+  const res = await institucionAPIv2.get(
+    `/institucion/${import.meta.env.VITE_APP_ID_INSTITUCION}/gacetaEventos`
+  );
 
+  // Ordenar por fecha más reciente primero
+  const gacetasOrdenadas = res.data.upea_gaceta_universitaria.sort((a, b) => {
+    return new Date(b.gaceta_fecha) - new Date(a.gaceta_fecha);
+  });
+
+  console.log("gacetas ordenadas (más reciente primero):", gacetasOrdenadas);
+  return gacetasOrdenadas;
+};
 
 export const getEventos = async () => {
   const res2 = await institucionAPIv2.get(

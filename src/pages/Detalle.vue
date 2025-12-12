@@ -73,7 +73,10 @@ const formatearFecha = (fechaString) => {
 
     return `${día} de ${mes} de ${año}`;
 };
-
+//es necesario hacer un cambio completo en la logica para obtener el recurso desde la nueva API
+const apiv2=import.meta.env.VITE_APP_API_URL_V1;
+//toma en cuenta que si se elimina la otra constante toda la vista se cae 
+//SE TIENE QUE VOLVER A SUBIR LAS IMAGENES A LA NUEVA API
 const api = import.meta.env.VITE_APP_ROOT_API;
 const frase = ObtenerFraseRandom();
 const getFacebook = (institucion) => {
@@ -258,13 +261,13 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <vue-pdf-embed :source="`${api}/Gaceta/${registro.gaceta_documento}`" :page="1" />
+                                    <vue-pdf-embed :source="`${apiv2}${registro.gaceta_documento}`" :page="1" />
                                 </div>
                             </div>
                             <hr />
                             <h5>DESCRIPCION</h5>
                             <hr />
-                            <a :href="`${api}/Gaceta/${registro.gaceta_documento}`" class="edu-btn btn-medium"
+                            <a :href="`${apiv2}${registro.gaceta_documento}`" class="edu-btn btn-medium"
                                 target="_blank">Descargar PDF</a>
                             <hr />
                             <h5>DATOS DE LA GACETA</h5>
