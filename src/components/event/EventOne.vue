@@ -40,7 +40,8 @@ const encrypted = (id) => {
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`${api}${item.publicaciones_imagen}`"
+
+                        :src="`/imagen-servicio${item.publicaciones_imagen}`"
                         alt="imagen"
                     />
                 </router-link>
@@ -81,7 +82,7 @@ const encrypted = (id) => {
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`${api}/Eventos/${item.evento_imagen}`" alt="imagen" />
+                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" />
                 </router-link>
                 <div class="event-time">
                     <span>{{ categoria }} </span>

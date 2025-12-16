@@ -10,10 +10,7 @@ const { institucion } = defineProps(["institucion"]);
 // Variables del template -----------------------------------------
 const nombre = ref(institucion.institucion_nombre);
 const iniciales = ref(institucion.institucion_iniciales);
-const api = import.meta.env.VITE_APP_ROOT_API
-const getLogo = (img) => {
-  return `${api}/InstitucionUpea/${img}`;
-};
+
 // Imagen y Frase Aleatoria --------------------------------------
 const img = RandomImage(institucion.portada);
 const frase = RandomFrase();

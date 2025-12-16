@@ -9,8 +9,8 @@ const api = import.meta.env.VITE_APP_ROOT_API;
         <a :href="link.id_link" target="_blank">
             
             <img
-                :src="api + '/InstitucionUpea/LinksExternos/' + link.imagen"
-                :alt="link.id_link"
+                :src="'/imagen-servicio' + link.imagen"
+                :alt="link.imagen"
                 style="border-radius: 50%"
             />
             <span class="user-info">

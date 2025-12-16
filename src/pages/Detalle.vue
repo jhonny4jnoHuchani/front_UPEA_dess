@@ -88,6 +88,8 @@ const getYouTube = (institucion) => {
 const getTwitter = (institucion) => {
     return institucion.institucion_twitter;
 };
+
+//hacer cambios para usar otro logo
 const getLogo = (institucion) => {
     const img = institucion.institucion_logo;
     return `${api}/InstitucionUpea/${img}`;
@@ -171,7 +173,7 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <img :src="`${api}/Publicaciones/${registro.publicaciones_imagen}`"
+                                    <img :src="`/imagen-servicio${registro.publicaciones_imagen}`"
                                         style="width: 750px" alt="Blog Image" />
                                 </div>
                             </div>
@@ -215,7 +217,7 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <img :src="`${api}/Eventos/${registro.evento_imagen}`" style="width: 750px"
+                                    <img :src="`/imagen-servicio${registro.evento_imagen}`" style="width: 750px"
                                         alt="Blog Image" />
                                 </div>
                             </div>

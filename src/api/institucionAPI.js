@@ -36,6 +36,7 @@ export const getAreas = async () => {
     const res = await institucionAPI.get(
         "/area/"
     );
+    console.log("areas", res.data);
     return res.data;
 };
 
@@ -143,15 +144,12 @@ export const getEventos = async () => {
   // ⭐ REFACORIZACIÓN LIMPIA SIN CAMPOS ANTIGUOS
   const eventosRefactor = res2.data.upea_evento.map((ev) => ({
     evento_descripcion: ev.evento_descripcion,
-    /////////////////////////////////////////////////
     evento_fecha: ev.evento_fecha,
-    // la respuesta esta retrazada un dia en el fronted view
     evento_hora: ev.evento_hora,
     evento_id: ev.evento_id,
     evento_imagen: ev.evento_imagen,
     evento_lugar: ev.evento_lugar,
     evento_titulo: ev.evento_titulo,
-    // renombrados:
     evento_galeria: ev.galeria,
     evento_tipo: ev.tipo_evento,
   }));

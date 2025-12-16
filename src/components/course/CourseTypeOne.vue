@@ -14,8 +14,8 @@
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`${api}${item.publicaciones_imagen}`"
-                        alt="imagen_imagen_publicacion "
+                        :src="`/imagen-servicio${item.publicaciones_imagen}`"
+                        alt="item.publicaciones_imagen"
                     />
                 </router-link>
                 <div class="time-top">
@@ -94,7 +94,7 @@
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
                     <!--se cambia la ruta de la imagen-->
-                    <img :src="`${api}${item.evento_imagen}`" alt="imagen" />
+                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" />
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>

@@ -45,7 +45,7 @@ import CryptoJS from "crypto-js";
 const { autoridad } = defineProps(["autoridad"]);
 const api = import.meta.env.VITE_APP_API_URL_V1;
 const foto = (foto) => {
-  return `${api}${foto}`;
+  return `/imagen-servicio${foto}`;
 };
 const clave_encryptacion = import.meta.env.VITE_APP_ENCRYPT
 const encrypted = (id) => {
