@@ -7,7 +7,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`">
-                    <img :src="`${api}${item.publicaciones_imagen}`" alt="image" style="width: 200px;">
+                    <img :src="`/imagen-servicio${item.publicaciones_imagen}`" alt="item.publicaciones_imagen" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>
@@ -40,7 +40,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`${api}${item.evento_imagen}`" alt="imagen" style="width: 200px;">
+                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{categoria}}</span>

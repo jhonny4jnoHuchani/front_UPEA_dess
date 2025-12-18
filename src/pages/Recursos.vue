@@ -54,23 +54,26 @@ const updateTitle = () => {
 };
 
 const getGacetas_All = (gacetas) => {
-  return gacetas.filter((g) => g.gaceta_tipo != CATEGORIAS.AUDITORIA_INTERNA);
+  return gacetas.filter((g) => g.gaceta_tipo.toUpperCase() != CATEGORIAS.AUDITORIA_INTERNA.toUpperCase());
 };
 
 const getAuditorias = (auditorias) => {
-  return auditorias.filter((g) => g.gaceta_tipo === CATEGORIAS.AUDITORIA_INTERNA);
+  return auditorias.filter((g) => g.gaceta_tipo.toUpperCase() === CATEGORIAS.AUDITORIA_INTERNA.toUpperCase());
 };
 
 const getPublicaciones_All = (publicaciones) => {
   return publicaciones.filter(
     (s) =>
-      s.publicaciones_tipo != CATEGORIAS.NOTICIA &&
-      s.publicaciones_tipo != CATEGORIAS.SERVICIO 
+      s.publicaciones_tipo.toUpperCase() != CATEGORIAS.NOTICIA.toUpperCase() &&
+      s.publicaciones_tipo.toUpperCase() != CATEGORIAS.SERVICIO.toUpperCase() 
   );
 };
 
 const getNoticias = (noticias) => {
-  return noticias.filter((s) => s.publicaciones_tipo === CATEGORIAS.NOTICIA);
+
+  return noticias.filter((s) =>
+    s.publicaciones_tipo.toUpperCase() === CATEGORIAS.NOTICIA.toUpperCase()
+  );
 };
 
 const getServicios = (servicios) => {

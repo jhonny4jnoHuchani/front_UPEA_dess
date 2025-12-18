@@ -4,7 +4,7 @@
             <div class="thumbnail-wrap">
                 <div class="thumbnail">
                     <router-link :to="`/CarreraDetalle/${encrypted(carrera.institucion_id)}`">
-                        <img :src="getLogo(logo)" alt="autoridad" />
+                        <img :src="getLogo(logo)" alt="imagen_carrera_servicio" />
                     </router-link>
                 </div>                
             </div>
@@ -50,7 +50,7 @@ const { carrera } = defineProps(["carrera"]);
 const id = carrera.institucion_id;
 const logo = carrera.institucion_logo;
 const getLogo = (img) => {
-    return `${import.meta.env.VITE_APP_ROOT_API}/InstitucionUpea/${img}`;
+    return `/imagen-servicio${img}`;
 };
 const textoSinEspacios = (textoConEspacios) => {
     return textoConEspacios.replace(/\s/g, "");

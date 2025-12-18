@@ -33,11 +33,10 @@ export const getInstitucion = async () => {
 };
 
 export const getAreas = async () => {
-    const res = await institucionAPI.get(
-        "/area/"
-    );
-    console.log("areas", res.data);
-    return res.data;
+  const res = await institucionAPIv2.get(
+    `public/area/carreras`
+  );
+  return res.data;
 };
 
 //https://serviciopagina.upea.bo/api/UpeaCarrera
@@ -57,10 +56,25 @@ export const getCarrera = async (data) => {
 
 // aqui se usan todos los links internos y externos de todas las carreras
 export const getLinksInstExtAllOne = async (data) => {
-    const res = await institucionAPI.get(
-        "/linksIntExtAll/" + data.queryKey[1]
-    );
-    return res.data;
+  const res2 = await institucionAPIv2.get(
+    `/institucion/${data.queryKey[1]}/recursos`
+  );
+  // EXTRAER Y TRANSFORMAR datos de la nueva API
+  let datosTransformados = [];
+  if (res2.data && res2.data.linksExternoInterno) {
+    datosTransformados = res2.data.linksExternoInterno.map((item) => ({
+
+      ei_id: item.id_link,
+      ei_imagen: item.imagen,
+      ei_nombre: item.nombre,
+      ei_link: item.url_link,
+      ei_estado: item.estado,
+      ei_tipo: item.tipo,
+    }));
+  } else {
+    console.log("No se encontró linksExternoInterno en la API V2");
+  }
+  return datosTransformados;
 };
 /*
 NO SE USAN ESTAS FUNCIONES POR EL MOMENTO
