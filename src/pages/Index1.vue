@@ -38,7 +38,7 @@ console.log("institucion en Index1.vue :");
 
         <!-- configuración del color -->
         {{ ConfigColorIcon(institucion,CATEGORIAS.PRINCIPAL) }}
-        <!-- final de configuración del color -->
+        <!-- final de configuración del color --> 
 
         <HeaderTwo showHeaderTop="true" :institucion="institucion" />
 
