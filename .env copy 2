@@ -6,13 +6,12 @@
 # ======================================
 #   LINK DE LA API-REST
 
-    VITE_APP_ROOT_API = https://serviciopagina.upea.bo
 # ======================================
 
 # ======================================
 #   LINK DEL ADMINISTRADOR PARA LAS PAGINAS WEB
 
-    VITE_APP_ADMIN_API = http://administracionpaginas.upea.edu.bo/login
+    VITE_APP_ADMIN_API = https://servicioadministrador.upea.bo/sign-in
 # ======================================
 
 # ======================================

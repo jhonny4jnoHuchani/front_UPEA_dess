@@ -159,7 +159,7 @@ const frase = RandomFrase()
                         <div class="inner text-center">
                             <p>
                                 &copy; Universidad Pública de El Alto {{ new Date().getFullYear() }}
-                                | <a href="https://utic.upea.bo/" target="_blank">UTIC_3</a> - Web Developer
+                                | <a href="https://utic.upea.bo/" target="_blank">UTIC</a> - Web Developer
                                 <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer" target="_blank">CristhianVM</a> - Todos
                                 los Derechos Reservados
                             </p>
@@ -177,33 +177,4 @@ const frase = RandomFrase()
 .link_footer:hover{
     color: var(--color-tertiary) !important;
 }
-
-.utic-logo {
-    width: 200px;
-    /* Tamaño aumentado */
-    height: auto;
-    border: 3px solid #ffffff;
-    /* Borde blanco sólido */
-    border-radius: 12px;
-    /* Esquinas más redondeadas */
-    box-shadow:
-        0 4px 15px rgba(255, 255, 255, 0.3),
-        /* Sombra externa blanca */
-        inset 0 0 10px rgba(255, 255, 255, 0.1);
-    /* Sombra interna sutil */
-    padding: 10px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.utic-logo:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow:
-        0 8px 25px rgba(255, 255, 255, 0.4),
-        inset 0 0 15px rgba(255, 255, 255, 0.15);
-    border-color: #f8f9fa;
-    /* Borde más brillante al hover */
-}
-
-
 </style>

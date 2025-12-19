@@ -131,7 +131,7 @@
           <div class="col-lg-12">
             <div class="inner text-center">
               <p>
-                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://utic.upea.bo/" target="_blank">UTIC_Yoga</a> | By Developer
+                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://utic.upea.bo/" target="_blank">UTIC_</a> | By Developer
                 <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>.                
               </p>
             </div>
