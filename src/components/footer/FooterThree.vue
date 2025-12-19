@@ -14,11 +14,11 @@ const correo = ref(institucion.institucion_correo1);
 const facebook = ref(institucion.institucion_facebook);
 const youtube = ref(institucion.institucion_youtube);
 const twitter = ref(institucion.institucion_twitter);
-const api = import.meta.env.VITE_APP_ROOT_API
+
 
 // Obtención del logo -------------------------------------
 const getLogo = (img) => {
-    return `${api}/InstitucionUpea/${img}`;
+    return `/imagen-servicio${img}`;
 };
 
 // Frase Aleatoria -----------------------------------------

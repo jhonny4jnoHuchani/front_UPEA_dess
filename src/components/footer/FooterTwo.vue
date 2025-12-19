@@ -18,7 +18,7 @@ const twitter = institucion.institucion_twitter;
 
 //obtención del logo ---------------------------------
 const getLogo = (img) => {
-    return `${import.meta.env.VITE_APP_ROOT_API}/InstitucionUpea/${img}`;
+    return `/imagen-servicio${img}`;
 };
 const frase = FraseRandom()
 const frase2 = FraseRandom()

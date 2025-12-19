@@ -48,10 +48,23 @@ export const getCarreras = async () => {
 };
 
 export const getCarrera = async (data) => {
-    const res = await institucionAPI.get(
-        "/InstitucionUPEA/"+data.queryKey[1]
-    );
-    return res.data.Descripcion;
+    const carreraId = data.queryKey[1]; // ← MISMO data.queryKey[1]
+    
+    // MISMOS endpoints que getInstitucion, pero con carreraId
+    const [basica, contenido] = await Promise.all([
+        institucionAPIv2.get(`/institucionesPrincipal/${carreraId}`),  // ← carreraId aquí
+        institucionAPIv2.get(`/institucion/${carreraId}/contenido`),   // ← y aquí
+    ]);
+    
+    // MISMA combinación que getInstitucion
+    const Descripcion = {
+        ...(basica.data.Descripcion || basica.data),
+        ...contenido.data,
+        id_carrera: carreraId, // ← DIFERENCIA: usar el ID real, no 0
+        slider: [],
+    };
+
+    return Descripcion;
 };
 
 // aqui se usan todos los links internos y externos de todas las carreras

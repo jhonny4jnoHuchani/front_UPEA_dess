@@ -93,7 +93,7 @@ const { isLoading: isLoadinLinks, data: links } = useQuery(
 );
 
 const getImagenLink = (img) => {
-    return `${api}/InstitucionUpea/LinksExternos/${img}`
+    return `/imagen-servicio${img}`
 }
 
 const capitalizarPrimeraLetra = (texto) => {

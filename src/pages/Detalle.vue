@@ -92,7 +92,7 @@ const getTwitter = (institucion) => {
 //hacer cambios para usar otro logo
 const getLogo = (institucion) => {
     const img = institucion.institucion_logo;
-    return `${api}/InstitucionUpea/${img}`;
+    return `/imagen-servicio${img}`;
 };
 
 const getPublicacionOne = (publicaciones, id) => {

@@ -35,7 +35,7 @@ const capitalizarPrimeraLetra = (texto) => {
 const api = import.meta.env.VITE_APP_ROOT_API
 
 const getImagenLink = (img) => {
-    return `${api}/InstitucionUpea/LinksExternos/${img}`
+    return `/imagen-servicio${img}`
 }
 </script>
 <template>

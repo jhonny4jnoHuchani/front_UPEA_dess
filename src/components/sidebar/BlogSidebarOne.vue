@@ -127,7 +127,7 @@ const encrypted = (id) => {
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
                                 <img
-                                    :src="`${api}/Publicaciones/${publicacion.publicaciones_imagen}`"
+                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
                                     style="width: 80px; height: 80px; object-fit: cover"
                                     :alt="categoria"
                                 />
@@ -162,7 +162,7 @@ const encrypted = (id) => {
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
                                 <img
-                                    :src="`${api}/Publicaciones/${publicacion.publicaciones_imagen}`"
+                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
                                     style="width: 80px; height: 80px; object-fit: cover"
                                     :alt="categoria"
                                 />
@@ -197,7 +197,7 @@ const encrypted = (id) => {
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
                                 <img
-                                    :src="`${api}/Publicaciones/${publicacion.publicaciones_imagen}`"
+                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
                                     style="width: 80px; height: 80px; object-fit: cover"
                                     :alt="categoria"
                                 />
@@ -232,7 +232,7 @@ const encrypted = (id) => {
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(evento.evento_id)}`">
                                 <img
-                                    :src="`${api}/Eventos/${evento.evento_imagen}`"
+                                    :src="`/imagen-servicio${evento.evento_imagen}`"
                                     style="width: 80px; height: 80px; object-fit: cover"
                                     :alt="categoria"
                                 />

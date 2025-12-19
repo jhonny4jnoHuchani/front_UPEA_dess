@@ -232,7 +232,7 @@ const portada = (institucion) => {
 }
 
 const getLogo = (img) => {
-    return `${import.meta.env.VITE_APP_ROOT_API}/InstitucionUpea/${img}`;
+    return `/imagen-servicio${img}`;
 };
 
 const showLoader = ref(true);
