@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="event-details">
                     <div class="main-thumbnail" style="position: relative;">
-                        <img :src="OneCarrera.portada.length > 1?portada(OneCarrera) : portada(institucion)" style="width: 1170px;height: 420px;object-fit: cover;" alt="Event">
+                        <img :src="OneCarrera.portada.length > 1?portada(OneCarrera) : portada(institucion)" style="width: 1170px;height: 420px;object-fit: cover;" alt="Imagen serviciov2 portadas Carreras">
                         <div
                             style="position: absolute;top: 0;left: 0; width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;background-color: rgba(0,0,0,.5);">
                             <img :src="getLogo(OneCarrera.institucion_logo)"

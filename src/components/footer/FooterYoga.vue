@@ -15,8 +15,8 @@
                                 <router-link to="/">
                                     <img class="logo-light" :src="getLogo(logo)" alt="Dark Logo" width="150" />
                                 </router-link>
-                                <a href="https://sie.upea.bo/l" target="_blank">
-                                    <img class="logo-light" src="/images/sie.png" alt="Dark Logo" width="170" />
+                                <a href="https://utic.upea.bo/" target="_blank">
+                                    <img class="logo-light" src="/images/utic.png" alt="Dark Logo" width="170" />
                                 </a>
                             </div>
 
@@ -131,7 +131,7 @@
           <div class="col-lg-12">
             <div class="inner text-center">
               <p>
-                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://sie.upea.bo/l" target="_blank">SIE</a> | By Developer
+                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://utic.upea.bo/" target="_blank">UTIC_Yoga</a> | By Developer
                 <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>.                
               </p>
             </div>

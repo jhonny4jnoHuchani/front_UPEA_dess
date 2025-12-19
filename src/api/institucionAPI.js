@@ -1,9 +1,10 @@
 import axios from "axios";
-
+/*
+SERVICIO API ANTERIOR NO SE USA YA
 const institucionAPI = axios.create({
     baseURL: "https://serviciopagina.upea.bo/api",
 });
-
+*/
 
 //https://serviciopagina.upea.bo/api/UpeaCarrera/7
 
@@ -25,7 +26,7 @@ export const getInstitucion = async () => {
     const Descripcion = {
       ...(basica.data.Descripcion || basica.data),
       ...contenido.data,
-      id_carrera: 0,
+      id_carrera: 1,
       slider: [],
     };
 
@@ -38,7 +39,8 @@ export const getAreas = async () => {
   );
   return res.data;
 };
-
+/*
+NO SE USA ESTA FUNCION
 //https://serviciopagina.upea.bo/api/UpeaCarrera
 export const getCarreras = async () => {
     const res = await institucionAPI.get(
@@ -46,21 +48,20 @@ export const getCarreras = async () => {
     );
     return res.data;
 };
-
+*/
 export const getCarrera = async (data) => {
-    const carreraId = data.queryKey[1]; // ← MISMO data.queryKey[1]
-    
-    // MISMOS endpoints que getInstitucion, pero con carreraId
+    const carreraId = data.queryKey[1]; 
+
     const [basica, contenido] = await Promise.all([
-        institucionAPIv2.get(`/institucionesPrincipal/${carreraId}`),  // ← carreraId aquí
-        institucionAPIv2.get(`/institucion/${carreraId}/contenido`),   // ← y aquí
+        institucionAPIv2.get(`/institucionesPrincipal/${carreraId}`),
+        institucionAPIv2.get(`/institucion/${carreraId}/contenido`),
     ]);
     
     // MISMA combinación que getInstitucion
     const Descripcion = {
         ...(basica.data.Descripcion || basica.data),
         ...contenido.data,
-        id_carrera: carreraId, // ← DIFERENCIA: usar el ID real, no 0
+        id_carrera: carreraId,
         slider: [],
     };
 

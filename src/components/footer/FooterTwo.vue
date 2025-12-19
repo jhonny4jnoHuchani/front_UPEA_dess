@@ -38,8 +38,8 @@ const frase2 = FraseRandom()
                                 <router-link to="/">
                                     <img class="logo-light" :src="getLogo(logo)" alt="Dark Logo" width="150" />
                                 </router-link>
-                                <a href="https://sie.upea.bo/l" target="_blank">
-                                    <img class="logo-light" src="/images/sie.png" alt="Dark Logo" width="170" />
+                                <a href="https://utic.upea.bo/" target="_blank">
+                                    <img class="logo-light" src="/images/utic.png" alt="Dark Logo" width="170" />
                                 </a>
                             </div>
                             <p class="description">
@@ -158,7 +158,7 @@ const frase2 = FraseRandom()
                             <p>
                                 &copy; Universidad Pública de El Alto
                                 {{ new Date().getFullYear() }} |
-                                <a href="https://sie.upea.bo/l" target="_blank">SIE</a> -
+                                <a href="https://utic.upea.bo/" target="_blank">UTIC_2</a> -
                                 Web Developer
                                 <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>
                                 - Todos los Derechos Reservados
