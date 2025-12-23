@@ -92,7 +92,7 @@ watch(
 watch(
   () => searchTerm.value,
   () => {
-    console.log("el valor del input es ", searchTerm.value);
+    // console.log("el valor del input es ", searchTerm.value);
   }
 );
 </script>

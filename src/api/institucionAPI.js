@@ -86,7 +86,7 @@ export const getLinksInstExtAllOne = async (data) => {
       ei_tipo: item.tipo,
     }));
   } else {
-    console.log("No se encontró linksExternoInterno en la API V2");
+    // console.log("No se encontró linksExternoInterno en la API V2");
   }
   return datosTransformados;
 };
@@ -160,8 +160,7 @@ export const getGacetas = async () => {
   const gacetasOrdenadas = res.data.upea_gaceta_universitaria.sort((a, b) => {
     return new Date(b.gaceta_fecha) - new Date(a.gaceta_fecha);
   });
-
-  console.log("gacetas ordenadas (más reciente primero):", gacetasOrdenadas);
+  // console.log("gacetas ordenadas (más reciente primero):", gacetasOrdenadas);
   return gacetasOrdenadas;
 };
 
@@ -198,7 +197,7 @@ export const getVideos = async () => {
     const res = await institucionAPIv2.get(
       `/institucion/${import.meta.env.VITE_APP_ID_INSTITUCION}/contenido`
     );
-    console.log("videos obtenidos API2 :",res.data.upea_videos);
+    // console.log("videos obtenidos API2 :",res.data.upea_videos);
 
     return res.data.upea_videos;
 };

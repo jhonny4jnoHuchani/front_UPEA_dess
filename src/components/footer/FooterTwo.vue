@@ -36,10 +36,10 @@ const frase2 = FraseRandom()
                                         align-items: center;
                                     ">
                                 <router-link to="/">
-                                    <img class="logo-light" :src="getLogo(logo)" alt="Dark Logo" width="150" />
+                                    <img class="logo-light" :src="getLogo(logo)" alt="Upea" width="150" />
                                 </router-link>
                                 <a href="https://utic.upea.bo/" target="_blank">
-                                    <img class="logo-light" src="/images/utic.png" alt="Dark Logo" width="170" />
+                                    <img class="logo-light" src="/images/utic.png" alt="Utic" width="170" />
                                 </a>
                             </div>
                             <p class="description">
@@ -158,9 +158,11 @@ const frase2 = FraseRandom()
                             <p>
                                 &copy; Universidad Pública de El Alto
                                 {{ new Date().getFullYear() }} |
-                                <a href="https://utic.upea.bo/" target="_blank">UTIC_2</a> -
+                                <a href="https://utic.upea.bo/" target="_blank">UTIC</a> -
                                 Web Developer
                                 <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>
+                                | Support by
+                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/" target="_blank">JhonnyAH</a>
                                 - Todos los Derechos Reservados
                             </p>
                         </div>

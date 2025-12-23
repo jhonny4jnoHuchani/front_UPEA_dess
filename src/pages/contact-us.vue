@@ -114,14 +114,14 @@
                         this.showResult = false;
                     }, 5000 );
                     e.target.reset();
-                    console.log( 'SUCCESS!', result.text );
+                    // console.log( 'SUCCESS!', result.text );
                 }, ( error ) => {
                     this.showResult = true;
                     this.resultText = error.text;
                     setTimeout( () => {
                         this.showResult = false;
                     }, 5000 );
-                    console.log( 'FAILED...', error.text );
+                    // console.log( 'FAILED...', error.text );
                 } );
             }
         },

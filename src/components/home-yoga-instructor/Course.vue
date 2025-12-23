@@ -28,11 +28,11 @@ const getPublicaciones_All = (publicaciones) => {
 };
 
 const getNoticias = (noticias) => {
-    return noticias.filter((s) => s.publicaciones_tipo === CATEGORIAS.NOTICIA);
+    return noticias.filter((s) => s.publicaciones_tipo.toUpperCase() === CATEGORIAS.NOTICIA.toUpperCase());
 };
 
 const getServicios = (servicios) => {
-    return servicios.filter((s) => s.publicaciones_tipo === CATEGORIAS.SERVICIO);
+    return servicios.filter((s) => s.publicaciones_tipo.toUpperCase()  === CATEGORIAS.SERVICIO.toUpperCase());
 };
 
 const getSlidesPerView = () => {

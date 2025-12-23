@@ -131,8 +131,10 @@
           <div class="col-lg-12">
             <div class="inner text-center">
               <p>
-                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://utic.upea.bo/" target="_blank">UTIC_</a> | By Developer
-                <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>.                
+                © UPEA - Universidad Pública de El Alto - Todos los derechos reservados <br><a href="https://utic.upea.bo/" target="_blank">UTIC</a> | By Developer
+                <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>.   
+                | Support by
+                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/" target="_blank">JhonnyAH</a>             
               </p>
             </div>
           </div>

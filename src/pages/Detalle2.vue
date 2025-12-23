@@ -93,7 +93,7 @@ const getLogo = (institucion) => {
 
 const getPublicacionOne = (publicaciones, id) => {
     const dato = publicaciones.find((e) => e.publicaciones_id === id);
-    console.log("publicacion encontrada",dato);
+    // console.log("publicacion encontrada",dato);
     return dato;
 };
 

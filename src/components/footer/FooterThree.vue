@@ -40,7 +40,7 @@ const frase = RandomFrase()
                                     <img class="logo-light" :src="getLogo(logo)" alt="Dark Logo" width="150" />
                                 </router-link>
                                 <a href="https://utic.upea.bo/" target="_blank">
-                                    <img src="/images/utic.png" alt="UTIC Logo" 
+                                    <img src="/images/logo_utic_cir.png" width="150" alt="UTIC Logo" 
 
                                 </a>
                             </div>
@@ -160,7 +160,10 @@ const frase = RandomFrase()
                             <p>
                                 &copy; Universidad Pública de El Alto {{ new Date().getFullYear() }}
                                 | <a href="https://utic.upea.bo/" target="_blank">UTIC</a> - Web Developer
-                                <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer" target="_blank">CristhianVM</a> - Todos
+                                <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer" target="_blank">CristhianVM</a>
+                                | Support by
+                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/" target="_blank">JhonnyAH</a>
+                                - Todos
                                 los Derechos Reservados
                             </p>
                         </div>

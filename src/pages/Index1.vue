@@ -27,7 +27,7 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
     "institucion",
     getInstitucion
 );
-console.log("institucion en Index1.vue :");
+// console.log("institucion en Index1.vue :");
 
 </script>
 <template>    
