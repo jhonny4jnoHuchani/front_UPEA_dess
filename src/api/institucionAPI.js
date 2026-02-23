@@ -18,6 +18,11 @@ const institucionAPIv2 = axios.create({
 
 /* DATOS OBTENIDOS DESDE LA API ================== */
 export const getInstitucion = async () => {
+
+  //añadir color primario y secundario a la respuesta de la API
+
+
+  
     const INSTITUCION_ID = import.meta.env.VITE_APP_ID_INSTITUCION;
     const [basica, contenido] = await Promise.all([
       institucionAPIv2.get(`/institucionesPrincipal/${INSTITUCION_ID}`),

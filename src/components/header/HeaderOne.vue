@@ -84,9 +84,6 @@ const ADMIN = import.meta.env.VITE_APP_ADMIN_API;
                                     <i class="icon-2"></i>
                                 </button>
                             </li> -->
-                            <li class="icon light-dark-icon">
-                                <ColorMode />
-                            </li>
                             <li class="header-btn">
                                 <a :href="ADMIN" class="edu-btn btn-medium" target="_blank"
                                     >Ingresar <i class="icon-4"></i

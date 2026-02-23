@@ -48,7 +48,9 @@
 import { ref } from "vue";
 import RandomImage from "../../utils/RandomImage";
 import MouseMove from "../animation/MouseMove.vue";
-import { FsLightbox } from "fslightbox-vue";
+// 👇 CORREGIDO: import sin llaves
+import FsLightbox from "fslightbox-vue";
+
 const { institucion } = defineProps(["institucion"]);
 
 const items = [
@@ -58,9 +60,11 @@ const items = [
 ];
 
 let index = null;
+
 /* DATOS A MOSTRAR */
 const img = RandomImage(institucion.portada);
-const video = ref(institucion.institucion_link_video_vision).value;
+// 👇 CORREGIDO: sin .value en la declaración
+const video = ref(institucion.institucion_link_video_vision);
 const toggler = ref(false);
 //const frase = RandomFrase();
 </script>

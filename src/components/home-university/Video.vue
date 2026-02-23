@@ -29,13 +29,13 @@
 import { ref } from "vue";
 import RandomImage from "../../utils/RandomImage";
 import RandomFrase from "../../utils/RandomFrase";
-import { FsLightbox } from "fslightbox-vue";
+import FsLightbox from "fslightbox-vue"; 
 
 // Definición de las Props
 const { institucion } = defineProps(["institucion"])
 
 // Variables de la plantilla -------------------------------------------
-const video = ref(institucion.institucion_link_video_vision).value;
+const video = ref(institucion.institucion_link_video_vision);
 const toggler = ref(false);
 
 // Imagen y Frase Aleatorias --------------------------------------------

@@ -49,7 +49,8 @@ const frase2 = FraseRandom()
                                 <ul class="information-list">
                                     <li><span>Dirección:</span>{{ direccion }}</li>
                                     <li>
-                                        <span>Celular:</span><a :href="`tel:+591${celular}`" target="_blank">+591 {{ celular
+                                        <span>Celular:</span><a :href="`tel:+591${celular}`" target="_blank">+591 {{
+                                            celular
                                         }}</a>
                                     </li>
                                     <li>
@@ -98,19 +99,29 @@ const frase2 = FraseRandom()
                             <div class="inner">
                                 <ul class="footer-link link-hover">
                                     <li>
-                                        <router-link to="/gallery-grid">Repositorio Institucional</router-link>
+                                        <a href="https://repositorio.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Repositorio Institucional
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/blog/blog-standard">Disbec</router-link>
+                                        <a href="https://disbedc.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Disbec
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/privacy-policy">Mi Biblioteca Upea</router-link>
+                                        <a href="https://biblioteca.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Mi Biblioteca Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/my-account">Radio Upea</router-link>
+                                        <a href="https://www.facebook.com/radioupea/" target="_blank" rel="noopener noreferrer">
+                                            Radio Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/contact-us">Tv Upea</router-link>
+                                        <a href="https://tv.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Tv Upea
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -140,7 +151,8 @@ const frase2 = FraseRandom()
                                                 class="icon-twitter"></i></a>
                                     </li>
                                     <li>
-                                        <a :href="youtube" target="_blank" class="color-yt"><i class="icon-youtube"></i></a>
+                                        <a :href="youtube" target="_blank" class="color-yt"><i
+                                                class="icon-youtube"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -162,7 +174,8 @@ const frase2 = FraseRandom()
                                 Web Developer
                                 <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>
                                 | Support by
-                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/" target="_blank">JhonnyAH</a>
+                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/"
+                                    target="_blank">JhonnyAH</a>
                                 - Todos los Derechos Reservados
                             </p>
                         </div>

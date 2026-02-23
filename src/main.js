@@ -1,4 +1,4 @@
-// importación de recursos para la aplicación.
+// main.js
 import { createApp } from "vue";
 import { VueQueryPlugin } from "vue-query";
 import router from "./router";
@@ -6,13 +6,14 @@ import App from "./App.vue";
 import "./assets/scss/app.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-//creación de la app
+// 👇 IMPORTAR (después de instalar)
+import InlineSvg from 'vue-inline-svg';
+
 const app = createApp(App);
+
+// 👇 REGISTRAR
+app.component('inline-svg', InlineSvg);
+
 app.use(VueQueryPlugin);
 app.use(router);
 app.mount("#app");
-
-/* ----------------------------------------------------------------
-    DESCRIPCIÓN : inicio de la aplicación, juntamente con las rutas
-        y las querys.
----------------------------------------------------------------- */

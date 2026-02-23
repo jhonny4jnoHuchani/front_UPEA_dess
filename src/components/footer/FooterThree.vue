@@ -40,9 +40,7 @@ const frase = RandomFrase()
                                     <img class="logo-light" :src="getLogo(logo)" alt="Dark Logo" width="150" />
                                 </router-link>
                                 <a href="https://utic.upea.bo/" target="_blank">
-                                    <img src="/images/logo_utic_cir.png" width="150" alt="UTIC Logo" 
-
-                                </a>
+                                    <img src="/images/logo_utic_cir.png" width="150" alt="UTIC Logo" </a>
                             </div>
                             <p class="description">
                                 <span class="color-primary">
@@ -87,22 +85,29 @@ const frase = RandomFrase()
                             <div class="inner">
                                 <ul class="footer-link link-hover">
                                     <li>
-                                        <router-link to="/faq">FAQ's</router-link>
+                                        <a href="https://repositorio.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Repositorio Institucional
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/gallery-grid">Repositorio Institucional</router-link>
+                                        <a href="https://disbedc.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Disbec
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/blog/blog-standard">Disbec</router-link>
+                                        <a href="https://biblioteca.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Mi Biblioteca Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/privacy-policy">Mi Biblioteca Upea</router-link>
+                                        <a href="https://www.facebook.com/radioupea/" target="_blank" rel="noopener noreferrer">
+                                            Radio Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/my-account">Radio Upea</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/contact-us">Tv Upea</router-link>
+                                        <a href="https://tv.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Tv Upea
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -123,14 +128,14 @@ const frase = RandomFrase()
                                         <li>
                                             <span>Correo:</span><a :href="`mailto:${correo}`" target="_blank">{{
                                                 correo
-                                            }}</a>
+                                                }}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 </p>
                                 <div class="input-group footer-subscription-form">
-                                    <router-link to="Contacto" class="edu-btn btn-secondary btn-medium">Mas Informacion <i
-                                            class="icon-4"></i></router-link>
+                                    <router-link to="Contacto" class="edu-btn btn-secondary btn-medium">Mas Informacion
+                                        <i class="icon-4"></i></router-link>
                                 </div>
                                 <ul class="social-share icon-transparent">
                                     <li>
@@ -142,7 +147,8 @@ const frase = RandomFrase()
                                                 class="icon-twitter"></i></a>
                                     </li>
                                     <li>
-                                        <a :href="youtube" target="_blank" class="color-yt"><i class="icon-youtube"></i></a>
+                                        <a :href="youtube" target="_blank" class="color-yt"><i
+                                                class="icon-youtube"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -160,9 +166,11 @@ const frase = RandomFrase()
                             <p>
                                 &copy; Universidad Pública de El Alto {{ new Date().getFullYear() }}
                                 | <a href="https://utic.upea.bo/" target="_blank">UTIC</a> - Web Developer
-                                <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer" target="_blank">CristhianVM</a>
+                                <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer"
+                                    target="_blank">CristhianVM</a>
                                 | Support by
-                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/" target="_blank">JhonnyAH</a>
+                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/"
+                                    target="_blank">JhonnyAH</a>
                                 - Todos
                                 los Derechos Reservados
                             </p>
@@ -174,10 +182,11 @@ const frase = RandomFrase()
     </footer>
 </template>
 <style>
-.link_footer{
+.link_footer {
     color: var(--color-primary) !important;
 }
-.link_footer:hover{
+
+.link_footer:hover {
     color: var(--color-tertiary) !important;
 }
 </style>

@@ -4,14 +4,14 @@ import { ref } from "vue";
 import SectionTitle from "../../components/common/SectionTitle.vue";
 import MouseMove from "../../components/animation/MouseMove.vue";
 import RandomImage from "../../utils/RandomImage";
-import { FsLightbox } from "fslightbox-vue";
+import FsLightbox from "fslightbox-vue";
 
 // Obtención de datos de las props -------------------------
 const { institucion } = defineProps(["institucion"]);
 
 // Datos ---------------------------------------------------
 const iniciales = ref(institucion.institucion_iniciales);
-const video = ref(institucion.institucion_link_video_vision).value;
+const video = ref(institucion.institucion_link_video_vision);
 const toggler = ref(false);
 const aniversario = import.meta.env.VITE_APP_ANIVERSARIO_UNIVERSIDAD
 
