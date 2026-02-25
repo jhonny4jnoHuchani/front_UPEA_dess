@@ -35,6 +35,7 @@ export const getInstitucion = async () => {
       slider: [],
     };
 
+
     return Descripcion;
 };
 

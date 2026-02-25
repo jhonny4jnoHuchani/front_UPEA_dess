@@ -3,6 +3,7 @@
         aplicación.
 ---------------------------------------------------------------- */
 export default function ConfigColorIcon(institucion,title) {
+    console.log("ConfigColorIcon", institucion.colorinstitucion);
     // Supongamos que aquí estableces los estilos en función de la información de la institución
     document.documentElement.style.setProperty(
         "--color-primary",
@@ -16,16 +17,14 @@ export default function ConfigColorIcon(institucion,title) {
         "--color-tertiary",
         institucion.colorinstitucion[0].color_terciario
     );   
-
+   // console.log(institucion);
     // Establece el ícono en el encabezado
     const link =
         document.querySelector("link[rel~='icon']") ||
         document.createElement("link");
     link.type = "image/x-icon";
     link.rel = "icon";
-    link.href = `${import.meta.env.VITE_APP_ROOT_API}/InstitucionUpea/${
-        institucion.institucion_logo
-    }`;
+    link.href = `/imagen-servicio${institucion.institucion_logo}`;
     document.getElementsByTagName("head")[0].appendChild(link);
     document.title =
         institucion.institucion_iniciales +
