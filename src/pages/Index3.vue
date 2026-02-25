@@ -26,22 +26,6 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
     getInstitucion
 );
 
-console.log("institucion en Index3.vue :");
-console.log("📊 Probando ConfigColorIcon:");
-console.log("📌 institucion:", institucion.value);
-console.log("📌 CATEGORIAS.PRINCIPAL:", CATEGORIAS.PRINCIPAL);
-
-// Probar la función manualmente
-const resultadoColor = ConfigColorIcon(institucion.value, CATEGORIAS.PRINCIPAL);
-console.log("🎨 Resultado de ConfigColorIcon:", resultadoColor);
-
-// Ver qué propiedades de color tiene la institución
-console.log("🌈 Colores disponibles:", {
-    color_primario: institucion.value?.colorinstitucion?.[0]?.color_primario,
-    color_secundario: institucion.value?.colorinstitucion?.[0]?.color_secundario,
-    color_terciario: institucion.value?.colorinstitucion?.[0]?.color_terciario
-});
-// console.log("institucion en Index3.vue :");
 </script>
 <template>
     <div v-if="loading_institucion">
@@ -49,7 +33,7 @@ console.log("🌈 Colores disponibles:", {
     </div>
     <div id="main-wrapper" class="main-wrapper" v-if="!loading_institucion">
 
-        <!-- configuración del color - AHORA CON VISTA PREVIA -->
+        <!-- configuración del color - AHORA CON VISTA PREVIA
         <div style="position: fixed; bottom: 10px; right: 10px; z-index: 9999; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
             <h4>🎨 Vista previa de colores</h4>
             <div style="display: flex; gap: 10px;">
@@ -59,7 +43,7 @@ console.log("🌈 Colores disponibles:", {
             </div>
             <p><small>Si ves colores aquí, el servicio funciona</small></p>
         </div>
-
+         -->
         <!-- Tu código existente -->
         {{ ConfigColorIcon(institucion, CATEGORIAS.PRINCIPAL) }}
         <!-- final de configuración del color -->
@@ -77,7 +61,11 @@ console.log("🌈 Colores disponibles:", {
 
         <MediosUniversitarios :institucion="institucion" style="padding-top: 120px;" />
 
-        <Course title="Noticias" subTitle="Lo Ultimo de..." :categoria="CATEGORIAS.NOTICIAS" style="background: #f1f1f1;" />
+        <Course 
+        title="Noticias" 
+        subTitle="Lo Ultimo de..." 
+        :categoria="CATEGORIAS.NOTICIAS" 
+        style="background: #f1f1f1;" />
 
         <WhyChoose :institucion="institucion" style="margin-bottom: 80px;" />
 

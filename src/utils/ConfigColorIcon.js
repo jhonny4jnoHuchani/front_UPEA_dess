@@ -2,21 +2,29 @@
     DESCRIPCIÓN : la función configura los colores y el icon de 
         aplicación.
 ---------------------------------------------------------------- */
-export default function ConfigColorIcon(institucion,title) {
-    console.log("ConfigColorIcon", institucion.colorinstitucion);
-    // Supongamos que aquí estableces los estilos en función de la información de la institución
+export default function ConfigColorIcon(institucion, title) {
+ // ✅ VALIDACIÓN CLAVE - Si no hay datos, salir sin error
+    if (!institucion || !institucion.colorinstitucion || !institucion.colorinstitucion[0]) {
+        console.log("⏳ Datos de institución aún no disponibles, esperando...");
+        return; // No hace nada, espera al próximo ciclo
+    }
+
+    // ✅ A partir de acá, es seguro acceder
+    const colores = institucion.colorinstitucion[0];
+    
     document.documentElement.style.setProperty(
         "--color-primary",
-        institucion.colorinstitucion[0].color_secundario
+        colores.color_secundario
     );
     document.documentElement.style.setProperty(
-        "--color-secondary",
-        institucion.colorinstitucion[0].color_primario
+        "--color-secondary", 
+        colores.color_primario
     );
     document.documentElement.style.setProperty(
         "--color-tertiary",
-        institucion.colorinstitucion[0].color_terciario
-    );   
+        colores.color_terciario
+    );
+    
    // console.log(institucion);
     // Establece el ícono en el encabezado
     const link =

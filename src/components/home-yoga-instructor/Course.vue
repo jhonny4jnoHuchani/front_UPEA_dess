@@ -6,12 +6,20 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { CATEGORIAS } from "../../types/types";
 import { getEventos, getPublicaciones } from "../../api/institucionAPI";
 import { useQuery } from "vue-query";
+
+// ✅ IMPORTAR MÓDULOS DE SWIPER (AGREGADO)
+import { Pagination } from "swiper/modules";
+
 const { extraClass, title, subTitle, categoria } = defineProps([
     "extraClass",
     "title",
     "subTitle",
     "categoria",
 ]);
+
+// ✅ DEFINIR MÓDULOS (AGREGADO)
+const modules = [Pagination];
+
 const { isLoading: isLoadingPublicaciones, data: publicaciones } = useQuery(
     "publicaciones",
     getPublicaciones
@@ -47,6 +55,7 @@ const getSlidesPerView = () => {
   }
 };
 </script>
+
 <template>
     <div class="edu-course-area course-area-6 edu-section-gap bg-lighten01">
         <div class="container">
