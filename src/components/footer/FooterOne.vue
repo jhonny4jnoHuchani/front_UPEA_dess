@@ -43,7 +43,8 @@ const frase = RandomFrase()
                                         <span>Celular:</span><a :href="`tel:+591${celular}`">+591 {{ celular }}</a>
                                     </li>
                                     <li>
-                                        <span>Correo:</span><a :href="`mailto:${correo}`" target="_blank">{{ correo }}</a>
+                                        <span>Correo:</span><a :href="`mailto:${correo}`" target="_blank">{{ correo
+                                            }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -86,19 +87,29 @@ const frase = RandomFrase()
                             <div class="inner">
                                 <ul class="footer-link link-hover">
                                     <li>
-                                        <router-link to="/gallery-grid">Repositorio Institucional</router-link>
+                                        <a href="https://repositorio.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Repositorio Institucional
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/blog/blog-standard">Disbec</router-link>
+                                        <a href="https://disbec.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Disbec
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/privacy-policy">Mi Biblioteca Upea</router-link>
+                                        <a href="https://biblioteca.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Mi Biblioteca Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/my-account">Radio Upea</router-link>
+                                        <a href="https://radio.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Radio Upea
+                                        </a>
                                     </li>
                                     <li>
-                                        <router-link to="/contact-us">Tv Upea</router-link>
+                                        <a href="https://tv.upea.bo/" target="_blank" rel="noopener noreferrer">
+                                            Tv Upea
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -109,7 +120,8 @@ const frase = RandomFrase()
                             <h4 class="widget-title">Contacto</h4>
                             <div class="inner">
                                 <p class="description">
-                                    Para comunicarte con Nosotros puede ingresar al siguiente enlace para mas información
+                                    Para comunicarte con Nosotros puede ingresar al siguiente enlace para mas
+                                    información
                                     acerca de la institucion.
                                 </p>
                                 <div class="input-group footer-subscription-form">
@@ -123,7 +135,7 @@ const frase = RandomFrase()
                                     <li>
                                         <a :href="facebook" target="_blank" class="color-fb"><i
                                                 class="icon-facebook"></i></a>
-                                    </li>                                                                        
+                                    </li>
                                     <li>
                                         <a :href="twitter" target="_blank" class="color-twitter"><i
                                                 class="icon-twitter"></i></a>
@@ -150,11 +162,7 @@ const frase = RandomFrase()
                                 {{ new Date().getFullYear() }} |
                                 <a href="https://sie.upea.bo/l" target="_blank">SIE</a> -
                                 Web Developer
-                                <a
-                                    href="https://www.linkedin.com/in/cristhian-vm"
-                                    target="_blank"
-                                    >CristhianVM</a
-                                >
+                                <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>
                                 - Todos los Derechos Reservados
                             </p>
                         </div>

@@ -3,17 +3,23 @@ import { ref } from 'vue';
 import { useQuery } from 'vue-query';
 import { getAreas } from '../../api/institucionAPI';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// 👇 IMPORTAR MÓDULOS DIRECTAMENTE (nueva sintaxis)
+import { Autoplay } from 'swiper/modules';
+
+// 👇 IMPORTAR ESTILOS
 import 'swiper/css';
-import SwiperCore, { Autoplay } from 'swiper';
-SwiperCore.use([Autoplay]);
+import 'swiper/css/autoplay';  // Estilos específicos para autoplay
 
 const { isLoading: isLoadingAreas, data: areas } = useQuery(
     "Areas",
     getAreas
 );
+
 const getLogo = (img) => {
     return `/imagen-servicio${img}`;
 };
+
 const getCarrerasLogo = (areas) => {
     var carrerasLogo = []
     for (const area of areas) {
@@ -28,12 +34,10 @@ const getCarrerasLogo = (areas) => {
 const swiperInstance = ref(null);
 
 const onSwiper = (swiper) => {
-    // Guardar la instancia de Swiper para poder acceder a ella más tarde
     swiperInstance.value = swiper;
 };
 
 const onSlideChange = () => {
-    // Reanudar la reproducción automática después de que se complete el cambio de diapositiva
     swiperInstance.value.autoplay.start();
 };
 
@@ -54,8 +58,14 @@ const getSlidesPerView = () => {
 <template>
     <div class="" v-if="!isLoadingAreas">
         <div class="carreras_slider" style="background: #f2f2f2">
-            <swiper :slides-per-view="getSlidesPerView()" :space-between="50" :autoplay="{ delay: 1500, disableOnInteraction: false }"
-                @swiper="onSwiper" @slideChange="onSlideChange" style="padding: 30px 0;">
+            <swiper 
+                :slides-per-view="getSlidesPerView()" 
+                :space-between="50" 
+                :autoplay="{ delay: 1500, disableOnInteraction: false }"
+                :modules="[Autoplay]"
+                @swiper="onSwiper" 
+                @slideChange="onSlideChange" 
+                style="padding: 30px 0;">
                 <swiper-slide v-for="img, index in getCarrerasLogo(areas)" :key="index" style="display: inline;">
                     <img :src="getLogo(img)" alt="" style="filter: drop-shadow(0px 0px 10px rgba(0,0,0,.3));">
                 </swiper-slide>

@@ -25,6 +25,22 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
     "institucion",
     getInstitucion
 );
+
+console.log("institucion en Index3.vue :");
+console.log("📊 Probando ConfigColorIcon:");
+console.log("📌 institucion:", institucion.value);
+console.log("📌 CATEGORIAS.PRINCIPAL:", CATEGORIAS.PRINCIPAL);
+
+// Probar la función manualmente
+const resultadoColor = ConfigColorIcon(institucion.value, CATEGORIAS.PRINCIPAL);
+console.log("🎨 Resultado de ConfigColorIcon:", resultadoColor);
+
+// Ver qué propiedades de color tiene la institución
+console.log("🌈 Colores disponibles:", {
+    color_primario: institucion.value?.colorinstitucion?.[0]?.color_primario,
+    color_secundario: institucion.value?.colorinstitucion?.[0]?.color_secundario,
+    color_terciario: institucion.value?.colorinstitucion?.[0]?.color_terciario
+});
 // console.log("institucion en Index3.vue :");
 </script>
 <template>
@@ -33,7 +49,18 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
     </div>
     <div id="main-wrapper" class="main-wrapper" v-if="!loading_institucion">
 
-        <!-- configuración del color -->
+        <!-- configuración del color - AHORA CON VISTA PREVIA -->
+        <div style="position: fixed; bottom: 10px; right: 10px; z-index: 9999; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+            <h4>🎨 Vista previa de colores</h4>
+            <div style="display: flex; gap: 10px;">
+                <div :style="{ width: '30px', height: '30px', backgroundColor: institucion?.colorinstitucion?.[0]?.color_primario, border: '1px solid black' }" title="Color Primario"></div>
+                <div :style="{ width: '30px', height: '30px', backgroundColor: institucion?.colorinstitucion?.[0]?.color_secundario, border: '1px solid black' }" title="Color Secundario"></div>
+                <div :style="{ width: '30px', height: '30px', backgroundColor: institucion?.colorinstitucion?.[0]?.color_terciario, border: '1px solid black' }" title="Color Terciario"></div>
+            </div>
+            <p><small>Si ves colores aquí, el servicio funciona</small></p>
+        </div>
+
+        <!-- Tu código existente -->
         {{ ConfigColorIcon(institucion, CATEGORIAS.PRINCIPAL) }}
         <!-- final de configuración del color -->
 
