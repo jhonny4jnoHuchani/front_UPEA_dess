@@ -1,0 +1,12 @@
+﻿{
+  "GHSA-7r86-cg39-jmmj": {
+    "active": "ignore",
+    "notes": "Ignorada porque ya estamos en versión segura",
+    "expiry": "2027-01-01"
+  },
+  "GHSA-23c5-xmqv-rm74": {
+    "active": "ignore",
+    "notes": "Ignorada porque ya estamos en versión segura",
+    "expiry": "2027-01-01"
+  }
+}
