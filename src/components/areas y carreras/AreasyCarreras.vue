@@ -10,7 +10,7 @@
             </div>
             <div class="content">
                 <h5 class="title">
-                    <router-link to="/instructor/instructor-profile">{{ carrera.carrera }}</router-link>
+                    <router-link :to="`/CarreraDetalle/${encrypted(carrera.institucion_id)}`">{{ carrera.carrera }}</router-link>
                 </h5>
                 <span class="designation">{{ carrera.nombre_simple }}</span>
                 <div>

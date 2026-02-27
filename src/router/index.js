@@ -23,7 +23,8 @@ const routes = [
     { path: "/Detalle2/:categoria/:id", component: Detalle2 },
     { path: "/Carreras", component: CarrerasAll },
     { path: "/CarreraDetalle/:id", component: CarreraDetalle},
-    { path: "/AutoridadDetalle/:id", component: AutoridadesDetalle}
+    { path: "/AutoridadDetalle/:id", component: AutoridadesDetalle},
+    
 ];
 
 /* ----------------------------------------------------------------

@@ -29,9 +29,9 @@ const frase = RandomFrase()
                     <div class="col-lg-3 col-md-6">
                         <div class="edu-footer-widget">
                             <div class="logo" style="display: grid;place-items: center;">
-                                <n-link to="/">
+                                <router-link to="/">
                                     <img class="logo-dark" :src="getLogo(logo)" width="140" alt="Light Logo" />
-                                </n-link>
+                                </router-link>
                             </div>
                             <p class="description">
                                 {{ frase }}
@@ -158,12 +158,15 @@ const frase = RandomFrase()
                     <div class="col-lg-12">
                         <div class="inner text-center">
                             <p>
-                                &copy; Universidad Pública de El Alto
-                                {{ new Date().getFullYear() }} |
-                                <a href="https://sie.upea.bo/l" target="_blank">SIE</a> -
-                                Web Developer
-                                <a href="https://www.linkedin.com/in/cristhian-vm" target="_blank">CristhianVM</a>
-                                - Todos los Derechos Reservados
+                                &copy; Universidad Pública de El Alto {{ new Date().getFullYear() }}
+                                | <a href="https://utic.upea.bo/" target="_blank">UTIC</a> - Web Developer
+                                <a href="https://www.linkedin.com/in/cristhian-vm" class="link_footer"
+                                    target="_blank">CristhianVM</a>
+                                | Support by
+                                <a href="https://www.linkedin.com/in/jhonny-ajno-huchani-6545903a2/"
+                                    target="_blank">JhonnyAH</a>
+                                - Todos
+                                los Derechos Reservados
                             </p>
                         </div>
                     </div>

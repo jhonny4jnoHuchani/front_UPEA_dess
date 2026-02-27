@@ -29,6 +29,25 @@ const dencrypted = (id) => {
     const decryptedData = decodeURIComponent(bytes.toString(CryptoJS.enc.Utf8));
     return decryptedData;
 };
+// restriciones para videos no cargaran por que no se pueden cargar en un iframe por que no son de youtube, se tendria que cargar con un reproductor de video
+const getEmbedUrl = (url) => {
+    if (!url) return '';
+    if (url.includes('/embed/')) return url;
+    
+    if (url.includes('youtube.com/watch')) {
+        const videoId = url.split('v=')[1]?.split('&')[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+    
+    if (url.includes('youtu.be')) {
+        const videoId = url.split('/').pop();
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+    return url;
+};
+
+
+
 
 // obtener datos de la url ----------------------------------------------
 const route = useRoute();
@@ -294,13 +313,15 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <iframe :src="registro.video_enlace" frameborder="0" style="
+                                    <iframe :src="getEmbedUrl(registro.video_enlace)" frameborder="0" style="
                                                     border-radius: 5px;
                                                     width: 100%;
                                                     height: 400px;
                                                 " />
                                 </div>
                             </div>
+
+                            
                             <hr />
                             <h5>DESCRIPCION</h5>
                             <hr />

@@ -1,5 +1,6 @@
 <script setup>
 import RandomImage from "../../utils/RandomImage";
+import MouseMove from '../animation/MouseMove.vue';
 
 const { institucion } = defineProps(["institucion"]);
 const logo = institucion.institucion_logo;

@@ -106,6 +106,25 @@ const encrypted = (id) => {
     const encodedData = encodeURIComponent(encryptedData);
     return encodedData;
 };
+//Funcion para adaptar enlaces de YouTube a formato embebido por politica de seguridad de navegadores modernos
+const getEmbedUrl = (url) => {
+    if (!url) return '';
+
+    if (url.includes('/embed/')) return url;
+
+    if (url.includes('youtube.com/watch')) {
+        const videoId = url.split('v=')[1]?.split('&')[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+
+    if (url.includes('youtu.be')) {
+        const videoId = url.split('/').pop();
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+
+    return url;
+};
+
 </script>
 <template>
     <div class="edu-blog-sidebar">
@@ -113,36 +132,25 @@ const encrypted = (id) => {
             <div class="inner">
                 <h4 class="widget-title">Lo Ultimo de {{ categoria }}</h4>
                 <!-- publicaciones -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.PUBLICACIONES"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="publicacion in getPublicaciones_All(publicaciones).slice(
-                            -3
-                        )"
-                        :key="publicacion.publicaciones_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.PUBLICACIONES">
+                    <div class="latest-post" v-for="publicacion in getPublicaciones_All(publicaciones).slice(
+                        -3
+                    )" :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img
-                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
-                                    style="width: 80px; height: 80px; object-fit: cover"
-                                    :alt="categoria"
-                                />
+                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                    style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">{{
                                     publicacion.publicaciones_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(publicacion.publicaciones_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(publicacion.publicaciones_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -150,34 +158,24 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- noticias -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.NOTICIAS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="publicacion in getNoticias(publicaciones).slice(-3)"
-                        :key="publicacion.publicaciones_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.NOTICIAS">
+                    <div class="latest-post" v-for="publicacion in getNoticias(publicaciones).slice(-3)"
+                        :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img
-                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
-                                    style="width: 80px; height: 80px; object-fit: cover"
-                                    :alt="categoria"
-                                />
+                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                    style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">{{
                                     publicacion.publicaciones_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(publicacion.publicaciones_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(publicacion.publicaciones_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -185,34 +183,24 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- servicios -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.SERVICIOS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="publicacion in getServicios(publicaciones).slice(-3)"
-                        :key="publicacion.publicaciones_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.SERVICIOS">
+                    <div class="latest-post" v-for="publicacion in getServicios(publicaciones).slice(-3)"
+                        :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img
-                                    :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
-                                    style="width: 80px; height: 80px; object-fit: cover"
-                                    :alt="categoria"
-                                />
+                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                    style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">{{
                                     publicacion.publicaciones_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(publicacion.publicaciones_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(publicacion.publicaciones_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -220,34 +208,23 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- eventos -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.EVENTOS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="evento in eventos.slice(-3)"
-                        :key="evento.evento_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.EVENTOS">
+                    <div class="latest-post" v-for="evento in eventos.slice(-3)" :key="evento.evento_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(evento.evento_id)}`">
-                                <img
-                                    :src="`/imagen-servicio${evento.evento_imagen}`"
-                                    style="width: 80px; height: 80px; object-fit: cover"
-                                    :alt="categoria"
-                                />
+                                <img :src="`/imagen-servicio${evento.evento_imagen}`"
+                                    style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(evento.evento_id)}`">{{
                                     evento.evento_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(evento.evento_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(evento.evento_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -255,29 +232,19 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- servicios -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.VIDEOS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="video in videos.slice(-3)"
-                        :key="video.video_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.VIDEOS">
+                    <div class="latest-post" v-for="video in videos.slice(-3)" :key="video.video_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(video.video_id)}`">
-                                <iframe
-                                    :src="video.video_enlace"
-                                    frameborder="0"
-                                    style="border-radius: 5px; width: 80px; height: 80px"
-                                />
+                                <iframe :src="getEmbedUrl(video.video_enlace)" frameborder="0"
+                                    style="border-radius: 5px; width: 80px; height: 80px" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(video.video_id)}`">{{
                                     video.video_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
@@ -289,34 +256,24 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- gacetas -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.GACETAS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="gaceta in getGacetas_All(gacetas).slice(-3)"
-                        :key="gaceta.gaceta_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.GACETAS">
+                    <div class="latest-post" v-for="gaceta in getGacetas_All(gacetas).slice(-3)"
+                        :key="gaceta.gaceta_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(gaceta.gaceta_id)}`">
-                                <vue-pdf-embed
-                                    :source="`${api}/Gaceta/${gaceta.gaceta_documento}`"
-                                    :page="1"
-                                    width="80"
-                                />
+                                <vue-pdf-embed :source="`${api}/Gaceta/${gaceta.gaceta_documento}`" :page="1"
+                                    width="80" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link :to="`/Detalle/${categoria}/${encrypted(gaceta.gaceta_id)}`">{{
                                     gaceta.gaceta_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(gaceta.gaceta_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(gaceta.gaceta_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -324,34 +281,23 @@ const encrypted = (id) => {
                 </div>
 
                 <!-- auditorias -->
-                <div
-                    class="content latest-post-list"
-                    v-if="categoria === CATEGORIAS.AUDITORIAS"
-                >
-                    <div
-                        class="latest-post"
-                        v-for="gaceta in getAuditorias(gacetas).slice(-3)"
-                        :key="gaceta.gaceta_id"
-                    >
+                <div class="content latest-post-list" v-if="categoria === CATEGORIAS.AUDITORIAS">
+                    <div class="latest-post" v-for="gaceta in getAuditorias(gacetas).slice(-3)" :key="gaceta.gaceta_id">
                         <div class="thumbnail">
                             <router-link to="/blog/blog-details">
-                                <vue-pdf-embed
-                                    :source="`${api}/Gaceta/${gaceta.gaceta_documento}`"
-                                    :page="1"
-                                    width="80"
-                                />
+                                <vue-pdf-embed :source="`${api}/Gaceta/${gaceta.gaceta_documento}`" :page="1"
+                                    width="80" />
                             </router-link>
                         </div>
                         <div class="post-content">
                             <h6 class="title">
                                 <router-link to="/blog/blog-details">{{
                                     gaceta.gaceta_titulo
-                                }}</router-link>
+                                    }}</router-link>
                             </h6>
                             <ul class="blog-meta">
                                 <li style="font-size: 0.8em">
-                                    <i class="icon-27"></i
-                                    >{{ formatearFecha(gaceta.gaceta_fecha) }}
+                                    <i class="icon-27"></i>{{ formatearFecha(gaceta.gaceta_fecha) }}
                                 </li>
                             </ul>
                         </div>
@@ -371,8 +317,7 @@ const encrypted = (id) => {
                                 <span>
                                     ({{
                                         getPublicaciones_All(publicaciones).length
-                                    }})</span
-                                >
+                                    }})</span>
                             </router-link>
                         </li>
                         <li>
@@ -423,9 +368,7 @@ const encrypted = (id) => {
                 </h4>
                 <span class="shape-line"><i class="icon-19"></i></span>
                 <p>una universidad que construye el futuro de Bolivia.</p>
-                <router-link to="/SobreNosotros" class="edu-btn btn-medium"
-                    >Historia<i class="icon-4"></i
-                ></router-link>
+                <router-link to="/SobreNosotros" class="edu-btn btn-medium">Historia<i class="icon-4"></i></router-link>
             </div>
         </div>
 
@@ -435,7 +378,8 @@ const encrypted = (id) => {
                 <div class="content">
                     <ul class="category-list" v-if="!isLoadinLinks">
                         <li v-for="link, index in SERVICIOS_VIRTUALES(links)" :key="index"><a :href="link.ei_link"
-                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre) }}</a></li>                      
+                                target="_blank" v-if="link.ei_estado === 1">{{ capitalizarPrimeraLetra(link.ei_nombre)
+                                }}</a></li>
                     </ul>
                 </div>
             </div>

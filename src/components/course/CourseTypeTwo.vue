@@ -39,6 +39,27 @@ const encrypted = (id) => {
     const encodedData = encodeURIComponent(encryptedData);
     return encodedData;
 };
+const getEmbedUrl = (url) => {
+    if (!url) return '';
+    
+    // Si ya es embed, devolver igual
+    if (url.includes('/embed/')) return url;
+    
+    // Para URLs tipo: https://www.youtube.com/watch?v=VIDEO_ID
+    if (url.includes('youtube.com/watch')) {
+        const videoId = url.split('v=')[1]?.split('&')[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+    
+    // Para URLs tipo: https://youtu.be/VIDEO_ID
+    if (url.includes('youtu.be')) {
+        const videoId = url.split('/').pop();
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+    
+    // Si no reconocemos, devolvemos la original (puede fallar)
+    return url;
+};
 </script>
 <template>
     <div
@@ -146,7 +167,7 @@ const encrypted = (id) => {
         <div class="inner">
             <div class="thumbnail">
                 <iframe
-                    :src="item.video_enlace"
+                    :src="getEmbedUrl(item.video_enlace)"
                     frameborder="0"
                     style="border-radius: 5px; width: 100%; height: 250px"
                 />

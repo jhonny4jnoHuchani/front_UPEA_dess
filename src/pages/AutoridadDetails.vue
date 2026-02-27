@@ -9,7 +9,7 @@ import { getInstitucion } from '../api/institucionAPI';
 import { useQuery } from 'vue-query';
 import { useRoute } from 'vue-router';
 import CryptoJS from "crypto-js";
-import { ref } from 'vue';
+import { ref, computed } from 'vue'; // ✅ AGREGADO: computed
 import { CATEGORIAS } from '../types/types';
 import ConfigColorIcon from "../utils/ConfigColorIcon"
 
@@ -17,35 +17,31 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
     "institucion",
     getInstitucion
 );
-const clave_encryptacion = import.meta.env.VITE_APP_ENCRYPT
+
+const clave_encryptacion = import.meta.env.VITE_APP_ENCRYPT;
 const dencrypted = (id) => {
     const bytes = CryptoJS.AES.decrypt(id, clave_encryptacion);
     const decryptedData = decodeURIComponent(bytes.toString(CryptoJS.enc.Utf8));
     return decryptedData;
 };
+
 const route = useRoute();
 const id = parseInt(dencrypted(route.params.id));
-var autoridad = ref({
-    "id_autoridad": 0,
-    "foto_autoridad": "",
-    "nombre_autoridad": "",
-    "cargo_autoridad": "",
-    "facebook_autoridad": "",
-    "celular_autoridad": "",
-    "twiter_autoridad": ""
-})
-const getAutoridad = (institucion) => {
-    autoridad = institucion.autoridad.find((a) => a.id_autoridad == id);
-}
+
+// ✅ NUEVO: autoridad como computed (reemplaza a la ref y a getAutoridad)
+const autoridad = computed(() => {
+    if (!institucion.value || !institucion.value.autoridad) return null;
+    return institucion.value.autoridad.find((a) => a.id_autoridad == id) || null;
+});
 
 const foto = (foto) => {
     if (!foto) return '/images/default-autoridad.jpg';
-    return `http://200.105.169.11:1041${foto}`;
+    return `/imagen-servicio${foto}`;
 }
 </script>
 
 <template>
-    {{ getAutoridad(institucion) }}
+    <!-- ✅ ELIMINADO: {{ getAutoridad(institucion) }} -->
     <div id="main-wrapper" class="main-wrapper" v-if="!loading_institucion">
 
         <!-- configuración del color -->
@@ -56,7 +52,12 @@ const foto = (foto) => {
 
         <BreadCrumbTwo pageTitle='AUTORIDAD' title='AUTORIDAD' :institucion="institucion" />
 
-        <div class="edu-team-details-area section-gap-equal" v-if="autoridad">
+        <!-- ✅ NUEVO: validación de carga -->
+        <div v-if="!autoridad" class="text-center py-5">
+            Cargando autoridad...
+        </div>
+
+        <div class="edu-team-details-area section-gap-equal" v-else>
             <div class="container">
                 <div class="row row--40">
                     <div class="col-lg-4">
@@ -102,7 +103,7 @@ const foto = (foto) => {
                                     </li>
                                 </ul>
                             </div>
-                            <!-- información Dr. Efrain Chambi Vargas PH. D.                                                       -->
+                            <!-- información Dr. Efrain Chambi Vargas PH. D. -->
                             <div class="bio-describe" v-if="id === 127">
                                 <h4 class="title">Historia</h4>
                                 <p>
@@ -196,6 +197,7 @@ const foto = (foto) => {
         <FooterOne :institucion="institucion" />
     </div>
 </template>
+
 <style>
 .img_icon_content {
     position: relative;

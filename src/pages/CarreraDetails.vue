@@ -1,22 +1,26 @@
 <template>
-    <div >
-        <LoaderOne v-if="showLoader"/>
+    <div>
+        <LoaderOne v-if="showLoader" />
     </div>
     <div id="main-wrapper" class="main-wrapper" v-if="!loading_institucion && !isLoadingOneCarrera">
 
         <!-- configuración del color -->
-        {{ ConfigColorIcon(institucion,CATEGORIAS.CARRERA_DETALLE) }}
+        {{ ConfigColorIcon(institucion, CATEGORIAS.CARRERA_DETALLE) }}
         <!-- final de configuración del color -->
 
-        <HeaderOne :institucion="institucion" :showHeaderTop="true"/>
+        <HeaderOne :institucion="institucion" :showHeaderTop="true" />
 
-        <div class="edu-breadcrumb-area breadcrumb-style-4 banner-style-carrera" :style="`background: url(${portada(institucion)});background-attachment: fixed;background-repeat: no-repeat;background-size: cover;`">
-            <div class="container" >
+        <div class="edu-breadcrumb-area breadcrumb-style-4 banner-style-carrera"
+            :style="`background: url(${portada(institucion)});background-attachment: fixed;background-repeat: no-repeat;background-size: cover;`">
+            <div class="container">
                 <div class="breadcrumb-inner" style="display: flex; justify-content: center;align-items: center;">
-                    <div class="page-title">                        
-                        <img :src="getLogo(institucion.institucion_logo)" style="margin-bottom: 30px;filter: drop-shadow(0 4px 8px rgba(0,0,0,.7));">
-                        <h1 class="" style=";text-shadow: 0px 0px 10px rgba(0,0,0,.5);color: #fff;z-index: 100;">{{ OneCarrera.institucion_nombre.toUpperCase() }}</h1>                        
-                    </div>                                        
+                    <div class="page-title">
+                        <img :src="getLogo(institucion.institucion_logo)"
+                            style="margin-bottom: 30px;filter: drop-shadow(0 4px 8px rgba(0,0,0,.7));">
+                        <h1 class="" style="text-shadow: 0px 0px 10px rgba(0,0,0,.5); color: #fff; z-index: 100;">
+                            {{ OneCarrera.institucion_nombre.toUpperCase() }}
+                        </h1>
+                    </div>
                 </div>
             </div>
 
@@ -37,7 +41,9 @@
             <div class="container">
                 <div class="event-details">
                     <div class="main-thumbnail" style="position: relative;">
-                        <img :src="OneCarrera.portada.length > 1?portada(OneCarrera) : portada(institucion)" style="width: 1170px;height: 420px;object-fit: cover;" alt="Imagen serviciov2 portadas Carreras">
+                        <img :src="OneCarrera.portada.length > 1 ? portada(OneCarrera) : portada(institucion)"
+                            style="width: 1170px;height: 420px;object-fit: cover;"
+                            alt="Imagen serviciov2 portadas Carreras">
                         <div
                             style="position: absolute;top: 0;left: 0; width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;background-color: rgba(0,0,0,.5);">
                             <img :src="getLogo(OneCarrera.institucion_logo)"
@@ -114,7 +120,7 @@
                                     </div>
                                 </div>
                                 <hr />
-                                                          
+
                                 <div class="event-speaker">
                                     <h3 class="heading-title">Autoridades</h3>
                                     <div class="row g-5 mb-5">
@@ -128,13 +134,14 @@
                                 <h3>Ubicación</h3>
                                 <ul class="event-meta">
                                     <li><i class="icon-40"></i>{{ OneCarrera.institucion_direccion }}</li>
-                                    <li><i class="icon-71"></i>Cel : <a :href="`tel:+591${OneCarrera.institucion_celular1}`"
+                                    <li><i class="icon-71"></i>Cel : <a
+                                            :href="`tel:+591${OneCarrera.institucion_celular1}`"
                                             target="_blank">(+591){{
                                                 OneCarrera.institucion_celular1 }}</a></li>
                                 </ul>
                                 <div class="gmap_canvas">
-                                    <iframe id="gmap_canvas" :src="OneCarrera.institucion_api_google_map" frameborder="0"
-                                        scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    <MapaCarrera :coordenadas="OneCarrera.institucion_api_google_map"
+                                        :titulo="OneCarrera.nombre_carrera" />
                                 </div>
 
                             </div>
@@ -161,25 +168,31 @@
                                             </ul>
 
                                             <h4 class="widget-title">Redes Sociales</h4>
-                                            <ul class="social-share icon-transparent" style="display: flex;justify-content: center;">
+                                            <ul class="social-share icon-transparent"
+                                                style="display: flex;justify-content: center;">
                                                 <li style="list-style: none;">
                                                     <a :href="OneCarrera.institucion_facebook" target="_blank"
-                                                        class="color-fb"><i class="icon-facebook" style="font-size: 1.5em;"></i></a>
+                                                        class="color-fb"><i class="icon-facebook"
+                                                            style="font-size: 1.5em;"></i></a>
                                                 </li>
 
                                                 <li style="list-style: none;">
                                                     <a :href="OneCarrera.institucion_twitter" target="_blank"
-                                                        class="color-twitter"><i class="icon-twitter" style="font-size: 1.5em;"></i></a>
+                                                        class="color-twitter"><i class="icon-twitter"
+                                                            style="font-size: 1.5em;"></i></a>
                                                 </li>
                                                 <li style="list-style: none;">
                                                     <a :href="OneCarrera.institucion_youtube" target="_blank"
-                                                        class="color-yt"><i class="icon-youtube" style="font-size: 1.5em;"></i></a>
+                                                        class="color-yt"><i class="icon-youtube"
+                                                            style="font-size: 1.5em;"></i></a>
                                                 </li>
                                             </ul>
 
                                             <div class="read-more-btn">
-                                                <router-link to="/Carreras" class="edu-btn"> <span style="font-size: 2em;">&larr;</span> Areas y Carreras </router-link>
-                                            </div>                                            
+                                                <router-link to="/Carreras" class="edu-btn"> <span
+                                                        style="font-size: 2em;">&larr;</span> Areas y Carreras
+                                                </router-link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -196,6 +209,7 @@
 
 <script setup>
 import HeaderOne from '../components/header/HeaderOne.vue';
+import MapaCarrera from '../components/MapaCarrera.vue';
 import InstructorTwo from '../components/instructor/InstructorTwo.vue';
 import FooterOne from '../components/footer/FooterOne.vue';
 import MouseMove from '../components/animation/MouseMove.vue';
@@ -238,7 +252,7 @@ const getLogo = (img) => {
 const showLoader = ref(true);
 // Oculta el loader después de 3 segundos
 setTimeout(() => {
-  showLoader.value = false;
+    showLoader.value = false;
 }, 1000);
 </script>
 
