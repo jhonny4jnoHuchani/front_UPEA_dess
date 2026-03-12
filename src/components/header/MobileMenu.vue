@@ -91,16 +91,17 @@ const { isLoading: isLoadinLinks, data: links } = useQuery(
     "links",
     getLinksInstExtAll
 );
-
+const api = import.meta.env.VITE_APP_ROOT_API
 const getImagenLink = (img) => {
-    return `/imagen-servicio${img}`
+    if (!img) return '/default-image.jpg';
+    return `${api}${img}`;
 }
 
 const capitalizarPrimeraLetra = (texto) => {
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
-const api = import.meta.env.VITE_APP_ROOT_API
+
 
 const SERVICIOS_VIRTUALES = (links) => {
     return links.filter(link => link.tipo === CATEGORIAS.NAV_SERVICIOS_VIRTUALES)

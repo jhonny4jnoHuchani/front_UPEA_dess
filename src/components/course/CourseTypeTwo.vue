@@ -5,7 +5,12 @@ import CryptoJS from "crypto-js";
 
 const { categoria, extraClass, item } = defineProps(["categoria", "extraClass", "item"]);
 
-const api = import.meta.env.VITE_APP_API_URL_V1;
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+
+const getImagenUrl = (imagen) => {
+  if (!imagen) return '/default-image.jpg';
+  return `${api}${imagen}`;
+};
 
 const formatearFecha = (fechaString) => {
     const fecha = new Date(fechaString);
@@ -77,7 +82,7 @@ const getEmbedUrl = (url) => {
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`/imagen-servicio${item.publicaciones_imagen}`"
+                        :src="getImagenUrl(item.publicaciones_imagen)"
                         alt="imagen"
                     />
                 </router-link>
@@ -123,7 +128,7 @@ const getEmbedUrl = (url) => {
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" />
+                    <img :src="getImagenUrl(item.evento_imagen)" alt="imagen" />
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>

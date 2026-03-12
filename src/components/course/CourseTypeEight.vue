@@ -14,7 +14,7 @@
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`/imagen-servicio${item.publicaciones_imagen}`"
+                        :src="getImagenUrl(item.publicaciones_imagen)"
                         alt="imagen"
                     />
                 </router-link>
@@ -46,7 +46,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" />
+                    <img :src="getImagenUrl(item.evento_imagen)" alt="imagen" />
                 </router-link>
                 <div class="course-price price-round" style="font-size: 1em">
                     {{ obtenerDia(item.evento_fecha) }}
@@ -78,6 +78,10 @@ const api = import.meta.env.VITE_APP_API_URL_V1;
 const obtenerDia = (fechaStr) => {
     const fecha = new Date(fechaStr);
     return fecha.getDate();
+};
+const getImagenUrl = (img) => {
+    if (!img) return '/default-image.jpg';
+    return `${api}${img}`;
 };
 
 const obtenerMes = (fechaStr) => {

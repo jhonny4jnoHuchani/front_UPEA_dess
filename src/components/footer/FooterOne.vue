@@ -15,9 +15,11 @@ const facebook = institucion.institucion_facebook;
 const youtube = institucion.institucion_youtube;
 const twitter = institucion.institucion_twitter;
 
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 //obtención del logo ---------------------------------
 const getLogo = (img) => {
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${api}${img}`;
 };
 const frase = RandomFrase()
 </script>

@@ -39,6 +39,11 @@ const getPublicaciones_All = (publicaciones) => {
             s.publicaciones_tipo != CATEGORIAS.SERVICIO
     );
 };
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+const getImagenUrl = (img) => {
+    if (!img) return '/default-image.jpg';
+    return `${api}${img}`;
+};
 
 const getNoticias = (noticias) => {
     return noticias.filter((s) => s.publicaciones_tipo === CATEGORIAS.NOTICIA);
@@ -73,7 +78,6 @@ const { isLoading: isLoadinLinks, data: links } = useQuery(
     getLinksInstExtAll
 );
 
-const api = import.meta.env.VITE_APP_ROOT_API;
 
 const formatearFecha = (fechaString) => {
     const fecha = new Date(fechaString);
@@ -138,7 +142,8 @@ const getEmbedUrl = (url) => {
                     )" :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                <img
+                                    :src="getImagenUrl(publicacion.publicaciones_imagen)"
                                     style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
@@ -163,7 +168,8 @@ const getEmbedUrl = (url) => {
                         :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                <img 
+                                    :src="getImagenUrl(publicacion.publicaciones_imagen)"
                                     style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
@@ -188,7 +194,8 @@ const getEmbedUrl = (url) => {
                         :key="publicacion.publicaciones_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(publicacion.publicaciones_id)}`">
-                                <img :src="`/imagen-servicio${publicacion.publicaciones_imagen}`"
+                                <img 
+                                    :src="getImagenUrl(publicacion.publicaciones_imagen)"
                                     style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>
@@ -212,7 +219,8 @@ const getEmbedUrl = (url) => {
                     <div class="latest-post" v-for="evento in eventos.slice(-3)" :key="evento.evento_id">
                         <div class="thumbnail">
                             <router-link :to="`/Detalle/${categoria}/${encrypted(evento.evento_id)}`">
-                                <img :src="`/imagen-servicio${evento.evento_imagen}`"
+                                <img 
+                                    :src="getImagenUrl(evento.evento_imagen)"
                                     style="width: 80px; height: 80px; object-fit: cover" :alt="categoria" />
                             </router-link>
                         </div>

@@ -14,7 +14,7 @@
                     :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`"
                 >
                     <img
-                        :src="`/imagen-servicio${item.publicaciones_imagen}`"
+                        :src="getImagenUrl(item.publicaciones_imagen)"
                         alt="item.publicaciones_imagen"
                     />
                 </router-link>
@@ -94,7 +94,9 @@
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
                     <!--se cambia la ruta de la imagen-->
-                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" />
+                    <img
+                        :src="getImagenUrl(item.evento_imagen)"
+                        alt="imagen_new_serv" />
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>
@@ -194,4 +196,10 @@ const encrypted = (id) => {
     const encodedData = encodeURIComponent(encryptedData);
     return encodedData;
 };
+const getImagenUrl = (foto) => {
+  if (!foto) return '';
+  const baseUrl = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+  return `${baseUrl}${foto}`;
+};
+
 </script>

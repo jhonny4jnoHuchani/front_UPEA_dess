@@ -244,9 +244,10 @@ const { isLoading: loading_institucion, data: institucion } = useQuery(
 const portada = (institucion) => {
     return RandomImage(institucion.portada)
 }
-
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 const getLogo = (img) => {
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${api}${img}`;
 };
 
 const showLoader = ref(true);

@@ -3,13 +3,18 @@ const { link } = defineProps(["link"]);
 //se tiene que camabiar la ruta de la imagen correspondiente al nuevo servicio
 // en especial la ruta donde esta la parte de medios universitarios 
 const api = import.meta.env.VITE_APP_ROOT_API;
+
+const getImagenUrl = (imagen) => {
+  if (!imagen) return '/default-image.jpg';
+  return `${api}${imagen}`;
+};
 </script>
 <template>
     <div class="instagram-grid">
         <a :href="link.id_link" target="_blank">
             
             <img
-                :src="'/imagen-servicio' + link.imagen"
+                :src="getImagenUrl(link.imagen)"
                 :alt="link.imagen"
                 style="border-radius: 50%"
             />

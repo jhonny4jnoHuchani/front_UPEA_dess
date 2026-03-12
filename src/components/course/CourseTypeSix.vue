@@ -7,7 +7,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.publicaciones_id)}`">
-                    <img :src="`/imagen-servicio${item.publicaciones_imagen}`" alt="item.publicaciones_imagen" style="width: 200px;">
+                    <img :src="getImagenUrl(item.publicaciones_imagen)" alt="item.publicaciones_imagen" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{ categoria }}</span>
@@ -40,7 +40,7 @@
         <div class="inner">
             <div class="thumbnail">
                 <router-link :to="`/Detalle/${categoria}/${encrypted(item.evento_id)}`">
-                    <img :src="`/imagen-servicio${item.evento_imagen}`" alt="imagen" style="width: 200px;">
+                    <img :src="getImagenUrl(item.evento_imagen)" alt="imagen" style="width: 200px;">
                 </router-link>
                 <div class="time-top">
                     <span class="duration">{{categoria}}</span>
@@ -175,6 +175,12 @@ const encrypted = (id) => {
     const encryptedData = CryptoJS.AES.encrypt(id.toString(), clave_encrypted).toString();
     const encodedData = encodeURIComponent(encryptedData);
     return encodedData;
+};
+const baseUrl = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+
+const getImagenUrl = (imagen) => {
+  if (!imagen) return '/default-image.jpg';
+  return `${baseUrl}${imagen}`;
 };
 
 </script>

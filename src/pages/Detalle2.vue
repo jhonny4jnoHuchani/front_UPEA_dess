@@ -74,7 +74,7 @@ const formatearFecha = (fechaString) => {
 
     return `${día} de ${mes} de ${año}`;
 };
-
+const api_archivos = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 const api = import.meta.env.VITE_APP_ROOT_API;
 const frase = ObtenerFraseRandom();
 const getFacebook = (institucion) => {
@@ -88,7 +88,8 @@ const getTwitter = (institucion) => {
 };
 const getLogo = (institucion) => {
     const img = institucion.institucion_logo;
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${api_archivos}${img}`;
 };
 
 const getPublicacionOne = (publicaciones, id) => {

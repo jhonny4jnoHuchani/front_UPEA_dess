@@ -4,12 +4,12 @@
 ---------------------------------------------------------------- */
 const RandomImage = (portada) => {
   if (!portada || portada.length === 0) return "";
-
+  const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
   const indiceAleatorio = Math.floor(Math.random() * portada.length);
   const imagenSeleccionada = portada[indiceAleatorio].portada_imagen;
 
   // SIEMPRE usar proxy, sin importar el entorno
-  return `/imagen-servicio${imagenSeleccionada}`;
+  return `${api}${imagenSeleccionada}`;
 };
 
 export default RandomImage;

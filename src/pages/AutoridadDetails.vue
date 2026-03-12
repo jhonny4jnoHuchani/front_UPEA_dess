@@ -33,10 +33,10 @@ const autoridad = computed(() => {
     if (!institucion.value || !institucion.value.autoridad) return null;
     return institucion.value.autoridad.find((a) => a.id_autoridad == id) || null;
 });
-
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 const foto = (foto) => {
     if (!foto) return '/images/default-autoridad.jpg';
-    return `/imagen-servicio${foto}`;
+    return `${api}${foto}`;
 }
 </script>
 

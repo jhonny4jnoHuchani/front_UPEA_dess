@@ -107,11 +107,16 @@ const getYouTube = (institucion) => {
 const getTwitter = (institucion) => {
     return institucion.institucion_twitter;
 };
-
+const apiv2_2 = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 //hacer cambios para usar otro logo
 const getLogo = (institucion) => {
     const img = institucion.institucion_logo;
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${apiv2_2}${img}`;
+};
+const getImagenUrl = (imagen) => {
+    if (!imagen) return '/default-image.png';
+    return `${apiv2_2}${imagen}`;
 };
 
 const getPublicacionOne = (publicaciones, id) => {
@@ -192,7 +197,7 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <img :src="`/imagen-servicio${registro.publicaciones_imagen}`"
+                                    <img :src="getImagenUrl(registro.publicaciones_imagen)"
                                         style="width: 750px" alt="Blog Image" />
                                 </div>
                             </div>
@@ -236,8 +241,9 @@ watch(
                                     <li><i class="icon-28"></i>{{ "UPEA" }}</li>
                                 </ul>
                                 <div class="thumbnail">
-                                    <img :src="`/imagen-servicio${registro.evento_imagen}`" style="width: 750px"
+                                    <img :src="getImagenUrl(registro.evento_imagen)" style="width: 750px"
                                         alt="Blog Image" />
+
                                 </div>
                             </div>
                             <hr />

@@ -10,7 +10,6 @@ import InlineSvg from 'vue-inline-svg';
 
 const app = createApp(App);
 
-// ✅ Variable global para imágenes — reemplaza el proxy /imagen-servicio
 // En producción resuelve directo a https://apiadministrador.upea.bo
 app.config.globalProperties.$apiUrl = import.meta.env.VITE_APP_API_URL_V1 || "https://apiadministrador.upea.bo";
 

@@ -3,7 +3,7 @@
         aplicación.
 ---------------------------------------------------------------- */
 export default function ConfigColorIcon(institucion, title) {
- // ✅ VALIDACIÓN CLAVE - Si no hay datos, salir sin error
+    // ✅ VALIDACIÓN CLAVE - Si no hay datos, salir sin error
     if (!institucion || !institucion.colorinstitucion || !institucion.colorinstitucion[0]) {
         console.log("⏳ Datos de institución aún no disponibles, esperando...");
         return; // No hace nada, espera al próximo ciclo
@@ -25,14 +25,16 @@ export default function ConfigColorIcon(institucion, title) {
         colores.color_terciario
     );
     
-   // console.log(institucion);
+    // Definir la URL base desde variable de entorno
+    const apiUrl = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+    
     // Establece el ícono en el encabezado
     const link =
         document.querySelector("link[rel~='icon']") ||
         document.createElement("link");
     link.type = "image/x-icon";
     link.rel = "icon";
-    link.href = `/imagen-servicio${institucion.institucion_logo}`;
+    link.href = `${apiUrl}${institucion.institucion_logo}`;
     document.getElementsByTagName("head")[0].appendChild(link);
     document.title =
         institucion.institucion_iniciales +

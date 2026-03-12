@@ -15,9 +15,10 @@ const { isLoading: isLoadingAreas, data: areas } = useQuery(
     "Areas",
     getAreas
 );
-
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 const getLogo = (img) => {
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${api}${img}`;
 };
 
 const getCarrerasLogo = (areas) => {

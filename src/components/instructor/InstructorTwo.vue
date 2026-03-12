@@ -5,8 +5,8 @@
                 <div class="thumbnail">
                     <router-link :to="`/AutoridadDetalle/${encrypted(autoridad.id_autoridad)}`">
                         <img
-                            :src="'/imagen-servicio' + autoridad.foto_autoridad" 
-                            alt="autoridad"
+                            :src="getImagenUrl(autoridad.foto_autoridad)"
+                            alt="autor_new_server"
                         />
                     </router-link>
                 </div>
@@ -62,4 +62,12 @@ const encrypted = (id) => {
     const encodedData = encodeURIComponent(encryptedData);
     return encodedData;
 };
+
+const getImagenUrl = (foto) => {
+  if (!foto) return '';
+  const baseUrl = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
+  return `${baseUrl}${foto}`;
+};
+
+
 </script>

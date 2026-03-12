@@ -45,12 +45,13 @@
 import { useQuery } from 'vue-query';
 import CryptoJS from "crypto-js";
 import { getAreas, getCarrera, getLinksInstExtAllOne } from '../../api/institucionAPI';
-
+const api = import.meta.env.VITE_APP_API_URL_V1 || 'https://apiadministrador.upea.bo';
 const { carrera } = defineProps(["carrera"]);
 const id = carrera.institucion_id;
 const logo = carrera.institucion_logo;
 const getLogo = (img) => {
-    return `/imagen-servicio${img}`;
+    if (!img) return '/default-logo.png';
+    return `${api}${img}`;
 };
 const textoSinEspacios = (textoConEspacios) => {
     return textoConEspacios.replace(/\s/g, "");
