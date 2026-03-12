@@ -32,7 +32,7 @@ const UNIDADES_ADMINISTRATIVAS = (links) => {
 const capitalizarPrimeraLetra = (texto) => {
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
-const api = import.meta.env.VITE_APP_ROOT_API
+const api = import.meta.env.VITE_APP_API_URL_V1
 
 const getImagenLink = (img) => {
     if (!img) return '/default-image.jpg';

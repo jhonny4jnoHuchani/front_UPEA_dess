@@ -2,7 +2,7 @@
 const { link } = defineProps(["link"]);
 //se tiene que camabiar la ruta de la imagen correspondiente al nuevo servicio
 // en especial la ruta donde esta la parte de medios universitarios 
-const api = import.meta.env.VITE_APP_ROOT_API;
+const api = import.meta.env.VITE_APP_API_URL_V1;
 
 const getImagenUrl = (imagen) => {
   if (!imagen) return '/default-image.jpg';
